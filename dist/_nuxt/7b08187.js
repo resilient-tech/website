@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{271:function(e,n,t){"use strict";t.r(n);var r=t(21),component=Object(r.a)({},(function(){var e=this,n=e.$createElement;return(e._self._c||n)("div",{staticClass:"wrapper"},[e._v("This is careers page")])}),[],!1,null,null,null);n.default=component.exports}}]);
