@@ -185,7 +185,7 @@ html {
 }
 
 body {
-  background: #11121b;
+  background: #0b0c1b;
 }
 
 body.is-preload *,
@@ -383,7 +383,7 @@ sup {
 }
 
 blockquote {
-  border-left: solid 4px rgba(255, 255, 255, 0.15);
+  border-left: solid 4px rgba(255, 255, 255, 0.1);
   font-style: italic;
   margin: 0 0 2em 0;
   padding: 0.5em 0 0.5em 2em;
@@ -392,7 +392,7 @@ blockquote {
 code {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 0.25em;
-  border: solid 1px rgba(255, 255, 255, 0.15);
+  border: solid 1px rgba(255, 255, 255, 0.1);
   font-family: 'Courier New', monospace;
   font-size: 0.9em;
   margin: 0 0.25em;
@@ -415,7 +415,7 @@ pre code {
 
 hr {
   border: 0;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.15);
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
   margin: 2em 0;
 }
 
@@ -1897,7 +1897,7 @@ hr.major {
 
 .box {
   border-radius: 0.25em;
-  border: solid 1px rgba(255, 255, 255, 0.15);
+  border: solid 1px rgba(255, 255, 255, 0.1);
   margin-bottom: 2em;
   padding: 1.5em;
 }
@@ -1931,7 +1931,7 @@ button,
   transition: border-color 0.2s ease;
   background-color: transparent;
   border: solid 1px !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
   border-radius: 3em;
   color: #ffffff !important;
   cursor: pointer;
@@ -2087,15 +2087,15 @@ button:hover:active:after,
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   border-radius: 0.25em;
-  border: solid 1px rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
+  border: solid 1px rgba(255, 255, 255, 0.1);
+  background: #1a1b2e;
   margin: 0 0 2em 0;
 }
 
 .features section {
   padding: 3.5em 3em 1em 7em;
   width: 50%;
-  border-top: solid 1px rgba(255, 255, 255, 0.15);
+  border-top: solid 1px rgba(255, 255, 255, 0.1);
   position: relative;
 }
 
@@ -2104,7 +2104,7 @@ button:hover:active:after,
 }
 
 .features section:nth-child(2n) {
-  border-left: solid 1px rgba(255, 255, 255, 0.15);
+  border-left: solid 1px rgba(255, 255, 255, 0.1);
 }
 
 .features section .icon {
@@ -2403,10 +2403,10 @@ textarea {
   -webkit-appearance: none;
   -ms-appearance: none;
   appearance: none;
-  background: rgba(255, 255, 255, 0.05);
+  background: #1a1b2e;
   border-radius: 0.25em;
   border: none;
-  border: solid 1px rgba(255, 255, 255, 0.15);
+  border: solid 1px rgba(255, 255, 255, 0.1);
   color: inherit;
   display: block;
   outline: 0;
@@ -2435,7 +2435,7 @@ textarea:focus {
 }
 
 select {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='rgba(255, 255, 255, 0.15)' /%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'%3E%3Cpath d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='rgba(255, 255, 255, 0.1)' /%3E%3C/svg%3E");
   background-size: 1.25rem;
   background-repeat: no-repeat;
   background-position: calc(100% - 1rem) center;
@@ -2513,7 +2513,7 @@ input[type='checkbox'] + label:before,
 input[type='radio'] + label:before {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 0.25em;
-  border: solid 1px rgba(255, 255, 255, 0.15);
+  border: solid 1px rgba(255, 255, 255, 0.1);
   content: '';
   display: inline-block;
   height: 1.65em;
@@ -2697,7 +2697,7 @@ ul.alt {
 }
 
 ul.alt li {
-  border-top: solid 1px rgba(255, 255, 255, 0.15);
+  border-top: solid 1px rgba(255, 255, 255, 0.1);
   padding: 0.5em 0;
 }
 
@@ -2903,7 +2903,7 @@ ul.menu {
 }
 
 ul.menu > li {
-  border-left: solid 1px rgba(255, 255, 255, 0.15);
+  border-left: solid 1px rgba(255, 255, 255, 0.1);
   display: inline-block;
   line-height: 1;
   margin-left: 1.5em;
@@ -2974,7 +2974,7 @@ header h6 + p {
 
 .split > :nth-child(2n - 1) {
   padding-right: 2.5em;
-  border-right: solid 1px rgba(255, 255, 255, 0.15);
+  border-right: solid 1px rgba(255, 255, 255, 0.1);
 }
 
 .split > :nth-child(2n) {
@@ -3017,7 +3017,7 @@ header h6 + p {
   }
 
   .split > * {
-    border-top: solid 1px rgba(255, 255, 255, 0.15);
+    border-top: solid 1px rgba(255, 255, 255, 0.1);
     margin: 4em 0 0 0;
     padding: 4em 0 0 0;
     width: 100% !important;
@@ -3199,7 +3199,7 @@ table {
 }
 
 table tbody tr {
-  border: solid 1px rgba(255, 255, 255, 0.15);
+  border: solid 1px rgba(255, 255, 255, 0.1);
   border-left: 0;
   border-right: 0;
 }
@@ -3221,11 +3221,11 @@ table th {
 }
 
 table thead {
-  border-bottom: solid 2px rgba(255, 255, 255, 0.15);
+  border-bottom: solid 2px rgba(255, 255, 255, 0.1);
 }
 
 table tfoot {
-  border-top: solid 2px rgba(255, 255, 255, 0.15);
+  border-top: solid 2px rgba(255, 255, 255, 0.1);
 }
 
 table.alt {
@@ -3233,7 +3233,7 @@ table.alt {
 }
 
 table.alt tbody tr td {
-  border: solid 1px rgba(255, 255, 255, 0.15);
+  border: solid 1px rgba(255, 255, 255, 0.1);
   border-left-width: 0;
   border-top-width: 0;
 }
@@ -3289,7 +3289,7 @@ table.alt tfoot {
 }
 
 .wrapper.style1 {
-  background-color: #11121b;
+  background-color: #0b0c1b;
 }
 
 .wrapper.style1-alt {
@@ -3489,7 +3489,7 @@ body.is-preload .wrapper.fade > .inner {
   }
 
   #header > nav {
-    border-top: solid 1px rgba(255, 255, 255, 0.15);
+    border-top: solid 1px rgba(255, 255, 255, 0.1);
     text-align: inherit;
   }
 
@@ -3539,7 +3539,7 @@ body.is-preload .wrapper.fade > .inner {
 }
 
 #footer > .inner a {
-  border-bottom-color: rgba(255, 255, 255, 0.15);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 #footer > .inner a:hover {
@@ -3559,7 +3559,7 @@ body.is-preload .wrapper.fade > .inner {
 
 #sidebar {
   padding: 2.5em 2.5em 0.5em 2.5em;
-  background: #11121b;
+  background: #0b0c1b;
   cursor: default;
   height: 100vh;
   left: 0;
@@ -3766,7 +3766,7 @@ body.is-ie #sidebar > .inner {
   transition-delay: 4.25s;
 }
 
-#sidebar nav a {
+#sidebar nav .nav-item {
   -moz-transition: color 0.2s ease;
   -webkit-transition: color 0.2s ease;
   -ms-transition: color 0.2s ease;
@@ -3784,8 +3784,8 @@ body.is-ie #sidebar > .inner {
   text-decoration: none;
 }
 
-#sidebar nav a:before,
-#sidebar nav a:after {
+#sidebar nav .nav-item:before,
+#sidebar nav .nav-item:after {
   border-radius: 0.2em;
   bottom: 0;
   content: '';
@@ -3795,11 +3795,11 @@ body.is-ie #sidebar > .inner {
   width: 100%;
 }
 
-#sidebar nav a:before {
+#sidebar nav .nav-item:before {
   background: #415451;
 }
 
-#sidebar nav a:after {
+#sidebar nav .nav-item:after {
   background-color: #54aa40;
   background-image: -moz-linear-gradient(to right, #4cc49d, #54aa40);
   background-image: -webkit-linear-gradient(to right, #4cc49d, #54aa40);
@@ -3812,15 +3812,15 @@ body.is-ie #sidebar > .inner {
   max-width: 0;
 }
 
-#sidebar nav a:hover {
+#sidebar nav .nav-item:hover {
   color: rgba(255, 255, 255, 0.55);
 }
 
-#sidebar nav a.active {
+#sidebar nav .nav-item.active {
   color: #ffffff;
 }
 
-#sidebar nav a.active:after {
+#sidebar nav .nav-item.active:after {
   max-width: 100%;
 }
 
@@ -3884,13 +3884,13 @@ body.is-preload #sidebar nav ul li {
     padding: 0;
   }
 
-  #sidebar nav a {
+  #sidebar nav .nav-item {
     height: inherit;
     line-height: inherit;
     padding: 0;
   }
 
-  #sidebar nav a:after {
+  #sidebar nav .nav-item:after {
     background-image: none;
     background-color: #54aa40;
   }
@@ -4017,7 +4017,7 @@ body.bg::before {
   background-color: #00ffff00;
 }
 
-#sidebar nav a.no-underline:before {
+#sidebar nav .nav-item.no-underline:before {
   background: none !important;
 }
 
@@ -4055,4 +4055,11 @@ body.bg::before {
   #sidebar {
     position: sticky;
   }
+}
+
+/* Custom Styles */
+
+#sidebar .nuxt-link {
+  text-decoration: none;
+  border-bottom: none;
 }
