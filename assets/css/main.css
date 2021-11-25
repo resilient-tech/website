@@ -2394,6 +2394,7 @@ label {
 }
 
 input[type='text'],
+.input-text,
 input[type='password'],
 input[type='email'],
 input[type='tel'],
@@ -2416,6 +2417,7 @@ textarea {
 }
 
 input[type='text']:invalid,
+.input-text:invalid,
 input[type='password']:invalid,
 input[type='email']:invalid,
 input[type='tel']:invalid,
@@ -2425,6 +2427,7 @@ textarea:invalid {
 }
 
 input[type='text']:focus,
+.input-text:focus,
 input[type='password']:focus,
 input[type='email']:focus,
 input[type='tel']:focus,
@@ -2458,6 +2461,7 @@ select::-ms-expand {
 }
 
 input[type='text'],
+.input-text,
 input[type='password'],
 input[type='email'],
 select {
