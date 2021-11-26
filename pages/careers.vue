@@ -151,6 +151,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: 'Careers | Reslient Tech',
+    }
+  },
   computed: {
     jobs() {
       return this.$store.state.jobs.jobs

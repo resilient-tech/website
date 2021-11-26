@@ -268,5 +268,12 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
+export default {
+  head() {
+    return {
+      title: 'Reslient Tech',
+    }
+  },
+}
 </script>

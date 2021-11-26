@@ -90,6 +90,13 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: `${
+        this.$store.getters['jobs/getJob'](this.$route.params.id).title
+      } | Reslient Tech`,
+    }
+  },
   data() {
     return {
       job: this.$store.getters['jobs/getJob'](this.$route.params.id),
