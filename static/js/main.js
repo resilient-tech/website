@@ -90,85 +90,66 @@
     )
   })
 
-  $('.job-application').submit(function (event) {
-    event.preventDefault()
-    $('.alert.error').hide()
-    $('.alert.success').hide()
+  // $('.job-application').submit(function (event) {
+  //   event.preventDefault()
+  //   $('.alert.error').hide()
+  //   $('.alert.success').hide()
 
-    let data = $('.job-application')
-      .serializeArray()
-      .reduce(function (obj, item) {
-        obj[item.name] = item.value
-        return obj
-      }, {})
+  //   let data = $('.job-application')
+  //     .serializeArray()
+  //     .reduce(function (obj, item) {
+  //       obj[item.name] = item.value
+  //       return obj
+  //     }, {})
 
-    let error_field = ''
-    $.each(data, function (key, val) {
-      if (key == 'remote') return true
+  //   let error_field = ''
+  //   $.each(data, function (key, val) {
+  //     if (key == 'remote') return true
 
-      if (!val) {
-        error_field = key
-        return false
-      }
-    })
+  //     if (!val) {
+  //       error_field = key
+  //       return false
+  //     }
+  //   })
 
-    if (error_field) {
-      if (!['about', 'projects'].includes(error_field)) {
-        error_field =
-          "<span style='font-weight: 500;'>" +
-          error_field.charAt(0).toUpperCase() +
-          error_field.slice(1) +
-          '</span>'
-        $('.error-message').html(
-          'Please enter a value in the field ' + error_field + '.'
-        )
-      }
+  //   if (error_field) {
+  //     if (!['about', 'projects'].includes(error_field)) {
+  //       error_field =
+  //         "<span style='font-weight: 500;'>" +
+  //         error_field.charAt(0).toUpperCase() +
+  //         error_field.slice(1) +
+  //         '</span>'
+  //       $('.error-message').html(
+  //         'Please enter a value in the field ' + error_field + '.'
+  //       )
+  //     }
 
-      if (error_field == 'about')
-        $('.error-message').html(
-          "Don't forget to tell us something about yourself"
-        )
+  //     if (error_field == 'about')
+  //       $('.error-message').html(
+  //         "Don't forget to tell us something about yourself"
+  //       )
 
-      if (error_field == 'projects')
-        $('.error-message').html(
-          "We'd like to know something about that cool project you've worked on"
-        )
+  //     if (error_field == 'projects')
+  //       $('.error-message').html(
+  //         "We'd like to know something about that cool project you've worked on"
+  //       )
 
-      $('.alert.error').fadeIn()
-      return
-    }
+  //     $('.alert.error').fadeIn()
+  //     return
+  //   }
 
-    if (!validate_email(data.email)) {
-      $('.error-message').html("The email address you've entered is incorrect.")
-      $('.alert.error').fadeIn()
-      return
-    }
+  //   if (!validate_email(data.email)) {
+  //     $('.error-message').html("The email address you've entered is incorrect.")
+  //     $('.alert.error').fadeIn()
+  //     return
+  //   }
 
-    if (!validate_phone(data.phone)) {
-      $('.error-message').html("The phone number you've entered is incorrect.")
-      $('.alert.error').fadeIn()
-      return
-    }
-
-    console.log(data)
-
-    // frappe.call({
-    // 	method: "resilient_erp.resilient_erp.job_application.make_job_application",
-    // 	args: {
-    // 		form_data: data
-    // 	},
-    // 	callback: function(r) {
-    // 		console.log(r)
-    // 		if (r.message === 'okay'){
-    // 			$('.alert.success').fadeIn();
-    // 			$(':input').val('');
-    // 		} else {
-    // 			$('.error-message').html(r.message);
-    // 			$('.alert.error').fadeIn();
-    // 		}
-    // 	}
-    // });
-  })
+  //   if (!validate_phone(data.phone)) {
+  //     $('.error-message').html("The phone number you've entered is incorrect.")
+  //     $('.alert.error').fadeIn()
+  //     return
+  //   }
+  // })
 
   // Sidebar.
   if ($sidebar.length > 0) {

@@ -19,37 +19,41 @@ export default {
       },
     ],
     script: [
-      { type: 'text/javascript', src: 'js/jquery.min.js', body: true },
+      { type: 'text/javascript', src: '/js/jquery.min.js', body: true },
       {
         type: 'text/javascript',
-        src: 'js/jquery.scrollex.min.js',
+        src: '/js/jquery.scrollex.min.js',
         body: true,
       },
       {
         type: 'text/javascript',
-        src: 'js/jquery.scrolly.min.js',
+        src: '/js/jquery.scrolly.min.js',
         body: true,
       },
       {
         type: 'text/javascript',
-        src: 'js/browser.min.js',
+        src: '/js/browser.min.js',
         body: true,
       },
       {
         type: 'text/javascript',
-        src: 'js/breakpoints.min.js',
+        src: '/js/breakpoints.min.js',
         body: true,
       },
-      { type: 'text/javascript', src: 'js/util.js', body: true },
-      { type: 'text/javascript', src: 'js/main.js', body: true },
+      { type: 'text/javascript', src: '/js/util.js', body: true },
+      { type: 'text/javascript', src: '/js/main.js', body: true },
     ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['~/assets/css/font-awesome.min.css', '~/assets/css/main.css'],
+  css: [
+    '~/assets/css/font-awesome.min.css',
+    '~/assets/scss/custom.scss',
+    '~/assets/css/main.css',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/bootstrap.js', '~/plugins/utils.client.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -58,7 +62,27 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    'nuxt-purgecss',
   ],
+
+  purgeCSS: {
+    mode: 'webpack',
+    enabled: ({ isDev, isClient }) => !isDev && isClient, // or `false` when in dev/debug mode
+    paths: [
+      'components/**/*.vue',
+      'layouts/**/*.vue',
+      'pages/**/*.vue',
+      'plugins/**/*.js',
+    ],
+    styleExtensions: ['.css'],
+    whitelist: ['body', 'html', 'nuxt-progress'],
+    extractors: [
+      {
+        extractor: (content) => content.match(/[A-z0-9-:\\/]+/g) || [],
+        extensions: ['html', 'vue', 'js'],
+      },
+    ],
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -66,6 +90,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/style-resources',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -80,4 +106,20 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
+  bootstrapVue: {
+    bootstrapCSS: false,
+    icons: true,
+  },
+  router: {
+    middleware: 'scrollyBinding',
+  },
 }
