@@ -25,23 +25,7 @@ export default {
         src: '/js/jquery.scrollex.min.js',
         body: true,
       },
-      {
-        type: 'text/javascript',
-        src: '/js/jquery.scrolly.min.js',
-        body: true,
-      },
-      {
-        type: 'text/javascript',
-        src: '/js/browser.min.js',
-        body: true,
-      },
-      {
-        type: 'text/javascript',
-        src: '/js/breakpoints.min.js',
-        body: true,
-      },
       { type: 'text/javascript', src: '/js/util.js', body: true },
-      { type: 'text/javascript', src: '/js/main.js', body: true },
     ],
   },
 
@@ -56,7 +40,14 @@ export default {
   plugins: ['~/plugins/bootstrap.js', '~/plugins/utils.client.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: {
+    dirs: [
+      '~/components',
+      '~/components/ui',
+      '~/components/home',
+      '~/components/jobs',
+    ],
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -119,7 +110,9 @@ export default {
     bootstrapCSS: false,
     icons: true,
   },
-  router: {
-    middleware: 'scrollyBinding',
+
+  transition: {
+    name: 'fade',
+    mode: 'out-in',
   },
 }

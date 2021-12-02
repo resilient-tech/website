@@ -4025,17 +4025,6 @@ body.bg::before {
   background: none !important;
 }
 
-#remove-file {
-  color: white;
-  display: none;
-  margin-left: 3em;
-}
-
-#file-warn {
-  color: #d8000c;
-  padding: 1em 0 0 1.5em;
-}
-
 .banner {
   display: none;
 }
@@ -4078,4 +4067,25 @@ body.bg::before {
 
 .btn.btn-primary {
   color: #fff;
+}
+
+.page-close {
+  cursor: pointer;
+  position: absolute;
+  top: 0rem;
+  right: 3rem;
+  font-size: 5rem;
+  text-decoration: none;
+  border: 0;
+  opacity: 0.8;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
