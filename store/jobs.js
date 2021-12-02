@@ -16,7 +16,6 @@ export const mutations = {
 
 export const actions = {
   async getJobs({ commit }) {
-    console.log(`getting jobs`)
     // get jobs from server
     // await new Promise((resolve) => setTimeout(resolve, 2000))
     commit('jobs', [
