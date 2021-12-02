@@ -108,10 +108,10 @@ export default {
   },
   bootstrapVue: {
     bootstrapCSS: false,
-    icons: true,
+    icons: false,
   },
 
-  transition: {
+  pageTransition: {
     name: 'fade',
     mode: 'out-in',
   },

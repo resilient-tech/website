@@ -35,7 +35,10 @@ export default {
     },
 
     defaultPostion() {
-      return this.$store.state.jobs.jobs.find((j) => j.id == 1).title
+      const position = this.$store.state.jobs.jobs.find(
+        (j) => j.id.toString() == this.$route.query.position
+      )
+      return position?.title || ''
     },
     formFields() {
       return {
@@ -64,11 +67,8 @@ export default {
           label: 'Position',
           required: true,
           type: 'select',
-          value:
-            this.$store.state.jobs.jobs.find(
-              (j) => j.id == this.$route.query.position
-            ).title || '',
-          options: this.$store.state.jobs.jobs.map((job) => job.title),
+          value: this.defaultPostion || '',
+          options: this.openPositions,
         },
         remote: {
           label: 'Remote',

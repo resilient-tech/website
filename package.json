@@ -16,7 +16,9 @@
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
     "nuxt-purgecss": "^1.0.0",
-    "sass": "^1.43.5"
+    "sass": "^1.43.5",
+    "lambda-multipart-parser": "^1.0.1",
+    "nodemailer": "^6.7.2"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.7",
