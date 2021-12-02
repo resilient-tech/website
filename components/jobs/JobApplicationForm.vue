@@ -42,12 +42,10 @@ export default {
         name: {
           label: 'Full Name',
           required: true,
-          value: 'Pruthvi Patel',
         },
         email: {
           label: 'Email Address',
           required: true,
-          value: 'test@test.com',
           type: 'email',
           validate(value) {
             if (value && !$nuxt.$validateEmail(value))
@@ -57,8 +55,6 @@ export default {
         phone: {
           label: 'Contact Number',
           required: true,
-          value: '8347248341',
-
           validate(value) {
             if (value && !$nuxt.$validatePhone(value))
               return 'Invalid Phone Number!'
@@ -77,13 +73,12 @@ export default {
         remote: {
           label: 'Remote',
           type: 'checkbox',
-          value: true,
+          value: false,
         },
         github: {
           label: 'GitHub Profile',
           placeholder: 'https://github.com/username',
           type: 'text',
-          value: 'https://github.com/pruthvi145',
           validate(value) {
             if (
               value &&
@@ -96,7 +91,6 @@ export default {
           label: 'Resume',
           type: 'file',
           required: true,
-
           accept: '.pdf, .doc, .docx',
           validate(value) {
             if (value && !/(\.(pdf|doc|docx))$/.test(value.name)) {
@@ -107,13 +101,11 @@ export default {
         about: {
           label: 'Tell us about yourself',
           type: 'textarea',
-          value: 'Python Developer',
           required: true,
         },
         projects: {
           label: "Tell us something cool you've worked on",
           type: 'textarea',
-          value: 'Amazing projects',
           required: true,
         },
       }
