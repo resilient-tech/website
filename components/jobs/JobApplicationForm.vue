@@ -15,6 +15,13 @@
             @submit="onSubmit"
             ref="jobApplicationForm"
           />
+          <transition name="fade">
+            <div class="alert error d-block" v-if="error">
+              <span class="icon fa-check-circle"></span>
+              {{ error }}
+              <a class="close" @click.prevent="closeErrorAlert">&times;</a>
+            </div>
+          </transition>
         </div>
       </div>
       <a @click="back" aria-hidden="true" class="page-close">&times;</a>
@@ -23,10 +30,13 @@
 </template>
 
 <script>
+import sendEmail from '~/api/email.js'
+
 export default {
   data() {
     return {
       isLoading: false,
+      error: null,
     }
   },
   computed: {
@@ -113,57 +123,50 @@ export default {
   },
   methods: {
     async onSubmit(data) {
+      this.error = null
       const form = this.$refs.jobApplicationForm
       if (!form.validate()) return
       this.isLoading = true
       await new Promise((resolve) => setTimeout(resolve, 1000))
-      this.isLoading = false
-      form.reset()
-      this.$router.push('/thank-you')
-      return
-
-      const formData = new FormData()
-      formData.append('subject', `New resume for the postion ${position}`)
-      formData.append('to', 'pruthvi@resilient.tech')
-      formData.append('body', this.generateEmailBody())
-      formData.append('attachments', this.file)
 
       try {
-        await this.$axios.post(
-          'https://resilient-tech-364ab0.netlify.live/send-email',
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }
+        await sendEmail(
+          'pruthvi@resilient.tech',
+          `New resume for the postion ${data.position}`,
+          this.generateEmailBody(data),
+          data.resume
         )
-        this.success = true
+        form.reset()
+        this.$router.push('/thank-you')
       } catch (e) {
-        this.errors.push(e)
+        console.log(e)
+        this.error = 'Something went wrong, Please try again later!'
       } finally {
         this.isLoading = false
       }
     },
 
-    generateEmailBody() {
+    generateEmailBody(data) {
       return `
-        Name: ${this.name}
-        Email: <a href='mailto:${this.email}'>${this.email}</a>
-        Phone:  <a href='tel:${this.phone}'>${this.phone}</a>
-        Position: ${this.position}
-        Remote: ${this.remote}
-        About: ${this.about}
-        Projects: ${this.projects}
+        Name: ${data.name} <br />
+        Email: <a href='mailto:${data.email}'>${data.email}</a><br />
+        Phone:  <a href='tel:${data.phone}'>${data.phone}</a><br />
+        Position: ${data.position}<br />
+        Remote: ${data.remote}<br />
+        About: ${data.about}<br />
+        Projects: ${data.projects}<br />
         GitHub Profile: ${
-          this.github
-            ? '<a href="' + this.github + '">' + this.github + '</a>'
+          data.github
+            ? '<a href="' + data.github + '">' + data.github + '</a>'
             : ''
-        }
+        }<br />
       `
     },
     back() {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+    },
+    closeErrorAlert() {
+      this.success = false
     },
   },
 }

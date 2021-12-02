@@ -10,10 +10,17 @@
       ref="contactForm"
     />
     <transition name="fade">
+      <div class="alert error d-block" v-if="error">
+        <span class="icon fa-check-circle"></span>
+        {{ error }}
+        <a class="close" @click.prevent="closErrorAlert">&times;</a>
+      </div>
+    </transition>
+    <transition name="fade">
       <div class="alert success d-block" v-if="success">
         <span class="icon fa-check-circle"></span>
         Thanks for writing in! We'll contact you shortly.
-        <a class="close" @click.prevent="closeSuccessMessage">&times;</a>
+        <a class="close" @click.prevent="closeSuccessAlert">&times;</a>
       </div>
     </transition>
   </div>
@@ -29,11 +36,13 @@
 </style>
 
 <script>
+import sendEmail from '~/api/email.js'
 export default {
   data() {
     return {
       success: false,
       isLoading: false,
+      error: null,
     }
   },
   computed: {
@@ -65,51 +74,41 @@ export default {
   },
   methods: {
     async onSubmit(data) {
+      this.success = false
+      this.error = null
       const form = this.$refs.contactForm
       if (!form.validate()) return
-      this.success = false
       this.isLoading = true
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      this.isLoading = false
-      this.success = true
-      // RESET Form
-      form.reset()
-      return
-      const formData = new FormData()
-      formData.append(
-        'subject',
-        `New contact form (resilient.tech) submission from ${this.name}(${this.email})`
-      )
-      formData.append('to', 'pruthvi@resilient.tech')
-      formData.append('body', this.generateEmailBody())
-
       try {
-        await this.$axios.post(
-          'https://resilient-tech-364ab0.netlify.live/send-email',
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          }
+        console.log(sendEmail)
+        const response = await sendEmail(
+          'pruthvi@resilient.tech',
+          `New Inquiry From ${data.name}(${data.email})`,
+          this.generateEmailBody(data)
         )
+        console.log(response)
+        form.reset()
         this.success = true
       } catch (e) {
-        this.errors.push(e)
+        console.log(e)
+        this.error = 'Something went wrong, Please try again later!'
       } finally {
         this.isLoading = false
       }
     },
 
-    generateEmailBody() {
+    generateEmailBody(data) {
       return `
-        Name: ${this.name}
-        Email: <a href="mailto:${this.email}">${this.email}</a>
-        message: ${this.message}
+        Name: ${data.name} <br />
+        Email: <a href="mailto:${data.email}">${data.email}</a><br />
+        message: ${data.message}<br />
 		  `
     },
 
-    closeSuccessMessage() {
+    closeSuccessAlert() {
+      this.success = false
+    },
+    closeErrorAlert() {
       this.success = false
     },
   },

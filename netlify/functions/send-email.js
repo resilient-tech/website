@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer')
 const parser = require('lambda-multipart-parser')
 
-const handler = async (event, context) => {
+const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' }
   }
@@ -15,20 +15,19 @@ const handler = async (event, context) => {
       return { statusCode: 400, body: JSON.stringify({ error }) }
     }
 
-    let testAccount = await nodemailer.createTestAccount()
-
     let transporter = nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
-      port: 587,
-      secure: false, // true for 465, false for other ports
+      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true, // true for 465, false for other ports
       auth: {
-        user: testAccount.user, // generated ethereal user
-        pass: testAccount.pass, // generated ethereal password
+        user: process.env.GMAIL_USER, // generated ethereal user
+        pass: process.env.GMAIL_PASSWORD, // generated ethereal password
       },
     })
 
     let info = await transporter.sendMail({
-      from: 'info@resilient.tech',
+      from: process.env.GMAIL_USER,
       to: body.to,
       subject: body.subject,
       html: body.body,
