@@ -82,7 +82,7 @@ export default {
       try {
         console.log(sendEmail)
         const response = await sendEmail(
-          'pruthvi@resilient.tech',
+          'pruthvi@resilient.tech,sagar@resilient.tech,info@resilient.tech',
           `New Inquiry From ${data.name}(${data.email})`,
           this.generateEmailBody(data)
         )

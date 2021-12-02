@@ -131,7 +131,7 @@ export default {
 
       try {
         await sendEmail(
-          'pruthvi@resilient.tech',
+          'pruthvi@resilient.tech,sagar@resilient.tech,info@resilient.tech',
           `New resume for the postion ${data.position}`,
           this.generateEmailBody(data),
           data.resume
