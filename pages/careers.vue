@@ -2,10 +2,7 @@
   <div>
     <Sidebar />
     <div id="wrapper" class="careers-page">
-      <section
-        id="intro"
-        class="wrapper style1 fullscreen fade-up align-center hero"
-      >
+      <section id="intro" class="wrapper style1 fullscreen align-center hero">
         <div class="inner">
           <h1 class="heading">
             We’ve got an ambitious mission,<br />

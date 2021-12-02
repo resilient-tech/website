@@ -3,18 +3,9 @@
     <Sidebar />
     <div id="wrapper">
       <!-- Intro -->
-      <section
-        id="intro"
-        class="wrapper style1 fullscreen fade-up align-center"
-      >
+      <section id="intro" class="wrapper style1 fullscreen align-center">
         <div class="inner">
-          <h1>
-            <img
-              src="~/assets/images/logo_white.png"
-              alt="Resilient Tech"
-              id="logo"
-            />
-          </h1>
+          <h1><Logo /></h1>
           <p>
             We inspire business growth with simple, yet powerful software
             experiences.
@@ -173,49 +164,7 @@
             Fill the form below and we'll get back to you quickly.
           </p>
           <div class="split style1">
-            <section>
-              <form class="contact-us" method="post" action="#">
-                <div class="fields">
-                  <div class="field half">
-                    <label for="name">Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      id="name"
-                      class="input-text"
-                      required
-                    />
-                  </div>
-                  <div class="field half">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required />
-                  </div>
-                  <div class="field">
-                    <label for="message">Message</label>
-                    <textarea
-                      name="message"
-                      id="message"
-                      rows="5"
-                      required
-                    ></textarea>
-                  </div>
-                </div>
-                <ul class="actions">
-                  <li><a href="" class="button submit">Send Message</a></li>
-                </ul>
-                <div class="alert error">
-                  <span class="icon fa-times-circle"></span>
-                  <strong>ERROR: </strong>
-                  <span class="error-message"></span>
-                  <a class="close" href="#">x</a>
-                </div>
-                <div class="alert success">
-                  <span class="icon fa-check-circle"></span>
-                  Thanks for writing in! We'll contact you shortly.
-                  <a class="close" href="#">x</a>
-                </div>
-              </form>
-            </section>
+            <ContactForm />
             <section>
               <ul class="contact">
                 <li>
@@ -269,7 +218,9 @@
 </template>
 
 <script>
+import Logo from '~/components/ui/Logo.vue'
 export default {
+  components: { Logo },
   head() {
     return {
       title: 'Reslient Tech',

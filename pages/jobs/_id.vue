@@ -2,8 +2,7 @@
   <div>
     <Sidebar />
     <div id="wrapper">
-      <!-- {{ job }} -->
-      <section id="about" class="wrapper style2 fade-up bg">
+      <section id="about" class="wrapper style2 bg">
         <div class="inner">
           <h2 class="major title">{{ job.title }}</h2>
           <div>
@@ -50,7 +49,10 @@
               </li>
             </ul>
           </div>
-          <NuxtLink to="/jobs/apply" class="btn btn-primary">
+          <NuxtLink
+            :to="`/jobs/apply?position=${job.id}`"
+            class="btn btn-primary"
+          >
             Apply Now
           </NuxtLink>
         </div>
