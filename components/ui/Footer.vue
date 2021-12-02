@@ -1,6 +1,6 @@
 <template>
   <footer id="footer" class="wrapper style1">
-    <div class="inner">
+    <div class="inner text-center w-100">
       <ul class="menu">
         <li>
           &copy; {{ currentYear }} <NuxtLink to="/">Resilient Tech</NuxtLink>.

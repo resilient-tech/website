@@ -1,7 +1,7 @@
 <template>
   <div class="banner">
     <div class="banner-text">
-      We're hiring, <a href="/careers">Apply now!</a>
+      We're hiring, <NuxtLink to="/careers">Apply now!</NuxtLink>
     </div>
   </div>
 </template>
