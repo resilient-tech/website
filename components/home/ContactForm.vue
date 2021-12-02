@@ -9,7 +9,7 @@
       @submit="onSubmit"
       ref="contactForm"
     />
-    <transition>
+    <transition name="fade">
       <div class="alert success d-block" v-if="success">
         <span class="icon fa-check-circle"></span>
         Thanks for writing in! We'll contact you shortly.
