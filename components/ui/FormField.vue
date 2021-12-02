@@ -22,6 +22,7 @@
       :placeholder="placeholder"
       :required="required"
       v-if="['text', 'email'].includes(inputType)"
+      class="input-text"
     />
     <span v-if="inputType === 'select'">
       <select
