@@ -1,6 +1,18 @@
 <template>
   <div>
-    <Sidebar />
+    <Sidebar
+      :navItems="{
+        Welcome: '#intro',
+        ERPNext: '#erpnext',
+        'Our Services': '#services',
+        'Get in touch': '#contact',
+      }"
+    >
+      <span class="sidebar-action mx-auto">
+        WE ARE HIRING,
+        <NuxtLink to="/careers">APPLY NOW</NuxtLink>!
+      </span>
+    </Sidebar>
     <div id="wrapper">
       <!-- Intro -->
       <section id="intro" class="wrapper style1 fullscreen align-center">
@@ -11,7 +23,7 @@
             experiences.
           </p>
           <ul class="actions">
-            <li><a href="#erpnext" class="button scrolly">Learn more</a></li>
+            <li><a href="#erpnext" class="button">Learn more</a></li>
           </ul>
         </div>
       </section>
@@ -217,6 +229,12 @@
   </div>
 </template>
 
+<style scoped>
+.sidebar-action {
+  font-size: small;
+  text-align: start;
+}
+</style>
 <script>
 import Logo from '~/components/ui/Logo.vue'
 export default {

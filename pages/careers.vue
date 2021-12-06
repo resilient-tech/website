@@ -1,8 +1,32 @@
 <template>
   <div>
-    <Sidebar />
+    <Sidebar
+      :navItems="{
+        Welcome: '#hero',
+        'Our Values': '#ourValues',
+        'Open Positions': '#openPositions',
+      }"
+    >
+      <NuxtLink
+        to="/"
+        class="
+          nuxt-link
+          button
+          fit
+          d-flex
+          align-items-center
+          justify-content-center
+        "
+      >
+        <i
+          class="fa fa-angle-left mb-1 me-2 prefix"
+          style="font-size: 1.2rem"
+        ></i>
+        Go to Home
+      </NuxtLink>
+    </Sidebar>
     <div id="wrapper" class="careers-page">
-      <section id="intro" class="wrapper style1 fullscreen align-center hero">
+      <section id="hero" class="wrapper style1 fullscreen align-center hero">
         <div class="inner">
           <h1 class="heading">
             We’ve got an ambitious mission,<br />
@@ -12,9 +36,9 @@
             Every person deserves the chance to learn regardless of where they
             are or their circumstances.
           </p>
-          <a href="#openPositions" class="btn btn-primary"
-            >VIEW OPEN POSITIONS</a
-          >
+          <a href="#openPositions" class="button primary">
+            VIEW OPEN POSITIONS
+          </a>
         </div>
       </section>
       <section id="ourValues" class="wrapper style1 fade-up">
@@ -99,10 +123,7 @@
                   <p class="card-text">
                     {{ job.about }}
                   </p>
-                  <NuxtLink
-                    :to="`jobs/${job.id}`"
-                    class="btn btn-primary text-white apply-now"
-                  >
+                  <NuxtLink :to="`jobs/${job.id}`" class="button primary">
                     APPLY NOW
                   </NuxtLink>
                 </div>
@@ -122,13 +143,6 @@
 
 .careers-page .hero .sub-heading {
   font-size: 1em;
-}
-
-.hero .button {
-  background-color: #5dbe46;
-  color: #fff;
-  font-size: 0.7em;
-  border-radius: 5px;
 }
 
 .jobs .card-title {

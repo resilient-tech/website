@@ -87,13 +87,6 @@
 </template>
 
 <style scoped>
-input,
-select,
-option,
-textarea {
-  background-color: #282a3f;
-}
-
 label {
   font-size: 1rem;
 }

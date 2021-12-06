@@ -20,8 +20,8 @@
       />
     </div>
     <a
-      class="btn btn-primary w-100"
-      type="button submit"
+      class="button primary submit"
+      type="submit"
       v-if="!isLoading"
       @click.stop.prevent="submit()"
     >

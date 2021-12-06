@@ -25,7 +25,7 @@ export default {
         src: '/js/jquery.scrollex.min.js',
         body: true,
       },
-      { type: 'text/javascript', src: '/js/util.js', body: true },
+      { type: 'text/javascript', src: '/js/main.js', body: true },
     ],
   },
 

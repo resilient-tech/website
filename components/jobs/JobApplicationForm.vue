@@ -1,7 +1,6 @@
 <template>
   <div>
     <section id="apply" class="card bg-dark fade-up mt-5 py-5">
-      <h1 class="text-center"><Logo class="mt-5" /></h1>
       <div class="m-auto col-10 col-lg-8 mt-5">
         <h1>Job Application</h1>
         <p>We'd love to have you on our team! Tell us more about yourself.</p>

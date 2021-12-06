@@ -1,6 +1,31 @@
 <template>
   <div>
-    <Sidebar />
+    <Sidebar
+      :navItems="{
+        'About Job': '#about',
+        Responsibilities: '#responsibilities',
+        Experience: '#experience',
+        Benefits: '#benefits',
+      }"
+    >
+      <NuxtLink
+        to="/careers"
+        class="
+          nuxt-link
+          button
+          fit
+          d-flex
+          align-items-center
+          justify-content-center
+        "
+      >
+        <i
+          class="fa fa-angle-left mb-1 me-2 prefix"
+          style="font-size: 1.2rem"
+        ></i>
+        Open Positions
+      </NuxtLink>
+    </Sidebar>
     <div id="wrapper">
       <section id="about" class="wrapper style2 bg">
         <div class="inner">
@@ -51,7 +76,7 @@
           </div>
           <NuxtLink
             :to="`/jobs/apply?position=${job.id}`"
-            class="btn btn-primary"
+            class="button primary"
           >
             Apply Now
           </NuxtLink>

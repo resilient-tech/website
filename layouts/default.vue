@@ -5,6 +5,11 @@
     <Footer />
   </div>
 </template>
+
 <script>
-export default {}
+export default {
+  mounted() {
+    // bindLogoWithIntroSection(jQuery)
+  },
+}
 </script>

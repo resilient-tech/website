@@ -1,7 +1,6 @@
 
 <template>
   <div class="text-center">
-    <h2><Logo class="mt-5" /></h2>
     <div
       class="card bg-dark fade-up mt-5 p-5 col-12 col-lg-6 m-auto text-center"
     >
@@ -12,7 +11,7 @@
       />
 
       <h2>Thank you for applying, <br />we'll connect you shortly!</h2>
-      <NuxtLink to="/" class="btn btn-outline-light mt-3">
+      <NuxtLink to="/" class="button primary mt-3">
         <i class="fa fa-home mr-2"></i> Home
       </NuxtLink>
     </div>
@@ -31,7 +30,7 @@ img.success-img {
 
 .btn-outline-light:hover,
 .btn-outline-light:hover i {
-  color: #1a1b2e;
+  color: rgba(255, 255, 255, 0.05);
 }
 
 /* .btn:hover i {

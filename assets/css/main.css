@@ -185,7 +185,7 @@ html {
 }
 
 body {
-  background: #0b0c1b;
+  background: #0b141b;
 }
 
 body.is-preload *,
@@ -2088,7 +2088,7 @@ button:hover:active:after,
   flex-wrap: wrap;
   border-radius: 0.25em;
   border: solid 1px rgba(255, 255, 255, 0.1);
-  background: #1a1b2e;
+  background: #182127;
   margin: 0 0 2em 0;
 }
 
@@ -2404,7 +2404,7 @@ textarea {
   -webkit-appearance: none;
   -ms-appearance: none;
   appearance: none;
-  background: #1a1b2e;
+  background: #182127;
   border-radius: 0.25em;
   border: none;
   border: solid 1px rgba(255, 255, 255, 0.1);
@@ -3293,7 +3293,7 @@ table.alt tfoot {
 }
 
 .wrapper.style1 {
-  background-color: #0b0c1b;
+  background-color: #0b141b;
 }
 
 .wrapper.style1-alt {
@@ -3346,7 +3346,7 @@ body.is-ie .wrapper.fullscreen {
   }
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 1280px) {
   .wrapper.fullscreen {
     padding: 2em 0;
     min-height: 0;
@@ -3563,7 +3563,7 @@ body.is-preload .wrapper.fade > .inner {
 
 #sidebar {
   padding: 2.5em 2.5em 0.5em 2.5em;
-  background: #0b0c1b;
+  background: #0b141b;
   cursor: default;
   height: 100vh;
   left: 0;
@@ -3842,6 +3842,7 @@ body.is-preload #sidebar nav ul li {
 
 @media screen and (max-width: 1280px) {
   #sidebar {
+    display: none;
     height: 3.5em;
     left: 0;
     line-height: 3.5em;
@@ -4025,24 +4026,9 @@ body.bg::before {
   background: none !important;
 }
 
-.banner {
-  display: none;
-}
-
 @media screen and (max-width: 1280px) {
   .careers {
     display: none;
-  }
-
-  .banner {
-    display: block;
-    text-align: center;
-    background: #0000001a;
-  }
-
-  .banner-text {
-    font-size: small;
-    padding: 6px;
   }
 
   #sidebar {
@@ -4080,6 +4066,14 @@ body.bg::before {
   opacity: 0.8;
 }
 
+@media screen and (max-width: 768px) {
+  .page-close {
+    font-size: 4rem;
+    right: 2rem;
+    top: -1rem;
+  }
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
@@ -4088,4 +4082,13 @@ body.bg::before {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.logo {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.show {
+  opacity: 1;
 }
