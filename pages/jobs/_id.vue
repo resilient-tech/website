@@ -21,7 +21,7 @@
       >
         <i
           class="fa fa-angle-left mb-1 me-2 prefix"
-          style="font-size: 1.2rem"
+          style="font-size: 1.2rem; margin-bottom: 0.15rem"
         ></i>
         Open Positions
       </NuxtLink>
