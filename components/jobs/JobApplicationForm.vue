@@ -105,6 +105,13 @@ export default {
             if (value && !/(\.(pdf|doc|docx))$/.test(value.name)) {
               return 'Please choose a .pdf, .doc or .docx file'
             }
+
+            if (
+              value &&
+              parseFloat((value.size / 1024 / 1024).toFixed(4)) > 10
+            ) {
+              return 'File size should be less than 10MB!'
+            }
           },
         },
         about: {
