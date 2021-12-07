@@ -36,7 +36,7 @@
 </style>
 
 <script>
-import sendEmail from '~/api/email.js'
+import { sendContactusInquiry } from '~/api/email.js'
 export default {
   data() {
     return {
@@ -73,36 +73,23 @@ export default {
     },
   },
   methods: {
-    async onSubmit(data) {
+    async onSubmit({ name, email, message }) {
       this.success = false
       this.error = null
       const form = this.$refs.contactForm
       if (!form.validate()) return
       this.isLoading = true
       try {
-        console.log(sendEmail)
-        const response = await sendEmail(
-          'pruthvi@resilient.tech,sagar@resilient.tech,info@resilient.tech',
-          `New Inquiry From ${data.name}(${data.email})`,
-          this.generateEmailBody(data)
-        )
+        const response = await sendContactusInquiry(name, email, message)
         console.log(response)
         form.reset()
         this.success = true
       } catch (e) {
-        console.log(e)
-        this.error = 'Something went wrong, Please try again later!'
+        this.error =
+          e.response?.data ?? 'Something went wrong, Please try again later!'
       } finally {
         this.isLoading = false
       }
-    },
-
-    generateEmailBody(data) {
-      return `
-        Name: ${data.name} <br />
-        Email: <a href="mailto:${data.email}">${data.email}</a><br />
-        message: ${data.message}<br />
-		  `
     },
 
     closeSuccessAlert() {

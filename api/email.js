@@ -1,22 +1,46 @@
 import axios from 'axios'
 
-function sendEmail(to, subject, body, attachments) {
-  const formData = new FormData()
-  formData.append('to', to)
-  formData.append('subject', subject)
-  formData.append('body', body)
-  formData.append('attachments', attachments)
-
+function sendContactusInquiry(name, email, message) {
   return axios
-    .post('/.netlify/functions/send-email', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    })
+    .post(
+      '/.netlify/functions/send-contact-inquiry',
+      formDataFromObject({ name, email, message }),
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    )
     .catch((error) => {
       if (error.response.data.includes('TimeoutError')) return
       throw error
     })
 }
 
-export default sendEmail
+function sendJobApplication(jobApplication) {
+  return axios
+    .post(
+      '/.netlify/functions/send-job-application',
+      formDataFromObject(jobApplication),
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    )
+    .catch((error) => {
+      if (error.response.data.includes('TimeoutError')) return
+      throw error
+    })
+}
+
+function formDataFromObject(object) {
+  const formData = new FormData()
+  for (const [key, value] of Object.entries(object)) {
+    if (value == null) continue
+    formData.append(key, value)
+  }
+  return formData
+}
+
+export { sendContactusInquiry, sendJobApplication }

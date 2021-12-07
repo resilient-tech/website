@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import sendEmail from '~/api/email.js'
+import { sendJobApplication } from '~/api/email.js'
 
 export default {
   data() {
@@ -121,7 +121,7 @@ export default {
     },
   },
   methods: {
-    async onSubmit(data) {
+    async onSubmit(values) {
       this.error = null
       const form = this.$refs.jobApplicationForm
       if (!form.validate()) return
@@ -129,17 +129,13 @@ export default {
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
       try {
-        await sendEmail(
-          'pruthvi@resilient.tech,sagar@resilient.tech,info@resilient.tech',
-          `New resume for the postion ${data.position}`,
-          this.generateEmailBody(data),
-          data.resume
-        )
+        await sendJobApplication(values)
         form.reset()
         this.$router.push('/thank-you')
       } catch (e) {
-        console.log(e)
-        this.error = 'Something went wrong, Please try again later!'
+        this.error =
+          (e.response && e.response.data) ??
+          'Something went wrong, Please try again later!'
       } finally {
         this.isLoading = false
       }
