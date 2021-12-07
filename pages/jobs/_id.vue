@@ -2,7 +2,6 @@
   <div>
     <Sidebar
       :navItems="{
-        'About Job': '#about',
         Responsibilities: '#responsibilities',
         Experience: '#experience',
         Benefits: '#benefits',
