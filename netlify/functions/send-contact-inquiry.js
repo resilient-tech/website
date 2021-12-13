@@ -17,11 +17,11 @@ const handler = async (event) => {
     await sendEmail(
       process.env.GMAIL_USER,
       process.env.CONTACT_US_RECIPIENTS,
-      `New Inquiry From ${body.name}(${body.email})`,
+      `Website Message from ${body.name}`,
       `
-        Name: ${body.name} <br />
-        Email: <a href="mailto:${body.email}">${body.email}</a><br />
-        message: ${body.message}<br />
+        Name: ${body.name} <br>
+        Email: <a href="mailto:${body.email}">${body.email}</a><br><br>
+        ${body.message}<br>
       `,
       body.email
     )
