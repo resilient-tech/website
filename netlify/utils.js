@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer')
 
-function sendEmail(from, to, subject, html, attachments) {
+function sendEmail(from, to, subject, html, replyTo, attachments) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
@@ -12,13 +12,7 @@ function sendEmail(from, to, subject, html, attachments) {
     },
   })
 
-  return transporter.sendMail({
-    from: from,
-    to: to,
-    subject: subject,
-    html: html,
-    attachments: attachments,
-  })
+  return transporter.sendMail({ from, to, subject, html, attachments, replyTo })
 }
 
 function validateRequest(body, requiredFields) {

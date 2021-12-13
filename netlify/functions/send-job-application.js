@@ -42,6 +42,7 @@ const handler = async (event) => {
             : ''
         }<br />
       `,
+      body.email,
       body.files
     )
 

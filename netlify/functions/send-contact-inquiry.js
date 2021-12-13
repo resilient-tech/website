@@ -22,7 +22,8 @@ const handler = async (event) => {
         Name: ${body.name} <br />
         Email: <a href="mailto:${body.email}">${body.email}</a><br />
         message: ${body.message}<br />
-      `
+      `,
+      body.email
     )
 
     return { statusCode: 200, body: JSON.stringify({ success: true }) }
