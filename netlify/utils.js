@@ -12,7 +12,15 @@ function sendEmail(from, to, subject, html, replyTo, attachments) {
     },
   })
 
-  return transporter.sendMail({ from, to, subject, html, attachments, replyTo })
+  return transporter.sendMail({
+    from,
+    to,
+    subject,
+    html,
+    attachments,
+    replyTo,
+    sender: process.env.GMAIL_SENDER,
+  })
 }
 
 function validateRequest(body, requiredFields) {
