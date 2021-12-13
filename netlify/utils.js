@@ -19,7 +19,6 @@ function sendEmail(from, to, subject, html, replyTo, attachments) {
     html,
     attachments,
     replyTo,
-    sender: process.env.GMAIL_SENDER,
   })
 }
 

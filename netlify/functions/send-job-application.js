@@ -25,7 +25,7 @@ const handler = async (event) => {
     }
 
     await sendEmail(
-      process.env.GMAIL_USER,
+      `Resilient Tech <${process.env.GMAIL_SENDER}>`,
       process.env.JOB_APPLICATION_RECIPIENTS,
       `New resume for the postion ${body.position}`,
       `

@@ -15,7 +15,7 @@ const handler = async (event) => {
       return { statusCode: 400, body: JSON.stringify(error) }
     }
     await sendEmail(
-      process.env.GMAIL_USER,
+      `Resilient Tech <${process.env.GMAIL_SENDER}>`,
       process.env.CONTACT_US_RECIPIENTS,
       `Website Message from ${body.name}`,
       `
