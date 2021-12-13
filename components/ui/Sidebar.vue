@@ -1,9 +1,9 @@
 <template>
   <section id="sidebar">
     <div class="inner">
-      <h3 class="text-center mb-5">
-        <NuxtLink to="/" class="border-0"><Logo class="mt-5 logo" /></NuxtLink>
-      </h3>
+      <!-- <h3 class="text-center mb-3">
+        <NuxtLink to="/" class="border-0"><Logo class="mt-2 logo" /></NuxtLink>
+      </h3> -->
 
       <nav>
         <ul>
@@ -14,9 +14,9 @@
           </li>
         </ul>
       </nav>
-      <slot v-if="hasDefaultSlot"></slot>
+      <!-- <slot v-if="hasDefaultSlot"></slot>
       <div v-else></div>
-      <!-- <div v-if="'action' in sidebarItems">
+      <div v-if="'action' in sidebarItems">
 
         <NuxtLink :to="sidebarItems.action.to" class="button" v-else>
           <i class="fa fa-angle-left" style="font-size: 1.2rem"></i>

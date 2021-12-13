@@ -8,10 +8,12 @@
         'Get in touch': '#contact',
       }"
     >
-      <span class="sidebar-action mx-auto">
-        WE ARE HIRING,
-        <NuxtLink to="/careers">APPLY NOW</NuxtLink>!
-      </span>
+      <!-- <div class="sidebar-action mx-auto">
+        <span class="hiring-text">
+          We're hiring!
+        </span>
+        <NuxtLink to="/careers" class="hiring-link">Apply Now</NuxtLink>
+      </div> -->
     </Sidebar>
     <div id="wrapper">
       <!-- Intro -->
@@ -22,9 +24,6 @@
             We inspire business growth with simple, yet powerful software
             experiences.
           </p>
-          <ul class="actions">
-            <li><a href="#erpnext" class="button">Learn more</a></li>
-          </ul>
         </div>
       </section>
 
@@ -231,8 +230,7 @@
 
 <style scoped>
 .sidebar-action {
-  font-size: small;
-  text-align: start;
+  font-size: large;
 }
 </style>
 <script>

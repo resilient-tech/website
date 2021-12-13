@@ -15,7 +15,8 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Montserrat:400,500',
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap',
+        // href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800&display=swap',
       },
     ],
     script: [
