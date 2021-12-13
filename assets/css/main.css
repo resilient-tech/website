@@ -2669,7 +2669,7 @@ input[type='radio'] + label:before {
 }
 
 #logo {
-  max-width: 9em;
+  max-width: 8em;
   height: auto;
 }
 
