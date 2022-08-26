@@ -3,7 +3,7 @@ import axios from 'axios'
 function sendContactusInquiry(name, email, message) {
   return axios
     .post(
-      '/.netlify/functions/send-contact-inquiry',
+      '/api/send-contact-inquiry',
       formDataFromObject({ name, email, message }),
       {
         headers: {
@@ -20,7 +20,7 @@ function sendContactusInquiry(name, email, message) {
 function sendJobApplication(jobApplication) {
   return axios
     .post(
-      '/.netlify/functions/send-job-application',
+      '/api/send-job-application',
       formDataFromObject(jobApplication),
       {
         headers: {
