@@ -181,7 +181,8 @@
                 <li>
                   <h3>Address</h3>
                   <span
-                    >8/A, Saimee Society - 2<br />
+                    >319, K10 Grand<br />
+                    Sarabhai Campus<br />
                     Subhanpura, Vadodara<br />
                     Gujarat, India - 390023
                   </span>
