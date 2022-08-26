@@ -1,14 +1,11 @@
 const parser = require('lambda-multipart-parser')
 const { sendEmail, validateRequest } = require('../utils')
 
-const handler = async (event) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' }
-  }
+export async function onRequestPost(request) {
   try {
-    const body = event.isBase64Encoded
-      ? await parser.parse(event)
-      : JSON.parse(event.body)
+    const body = request.isBase64Encoded
+      ? await parser.parse(request)
+      : JSON.parse(request.body)
 
     const error = validateRequest(body, [
       'name',
@@ -46,10 +43,8 @@ const handler = async (event) => {
       body.files
     )
 
-    return { statusCode: 200, body: JSON.stringify({ success: true }) }
+    return new Response(JSON.stringify({ success: true }));
   } catch (error) {
-    return { statusCode: 500, body: error.toString() }
+    return new Response(error.toString(), { status: 500});
   }
 }
-
-module.exports = { handler }
