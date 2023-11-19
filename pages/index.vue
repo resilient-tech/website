@@ -181,10 +181,10 @@
                 <li>
                   <h3>Address</h3>
                   <span
-                    >319, K10 Grand<br />
-                    Sarabhai Campus<br />
-                    Subhanpura, Vadodara<br />
-                    Gujarat, India - 390023
+                    >101, Deepam Signature<br />
+                    Jetalpur Rd<br />
+                    Alkapuri, Vadodara<br />
+                    Gujarat, India - 390020
                   </span>
                 </li>
                 <li>
