@@ -120,7 +120,7 @@ export default {
     return {
       title: `${
         this.$store.getters['jobs/getJob'](this.$route.params.id).title
-      } | Reslient Tech`,
+      } | Resilient Tech`,
     }
   },
   data() {

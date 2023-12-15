@@ -164,7 +164,7 @@
 export default {
   head() {
     return {
-      title: 'Careers | Reslient Tech',
+      title: 'Careers | Resilient Tech',
     }
   },
   computed: {

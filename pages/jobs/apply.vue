@@ -8,7 +8,7 @@
 export default {
   head() {
     return {
-      title: 'Apply Now | Reslient Tech',
+      title: 'Apply Now | Resilient Tech',
     }
   },
   data() {

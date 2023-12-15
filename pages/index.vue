@@ -240,7 +240,7 @@ export default {
   components: { Logo },
   head() {
     return {
-      title: 'Reslient Tech',
+      title: 'Resilient Tech',
     }
   },
 }
