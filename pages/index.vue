@@ -231,7 +231,7 @@ export default {
 
       meta: [
         { hid: 'description', name: 'description', content: 'We inspire business growth with simple, yet powerful software experiences.' },
-        { hid: 'keywords', name: 'keywords', content: 'Resilient Tech, ERP , ERPNext, Frappe,business management, open source, software, services,Vadodara,Gujarat,India,Baroda' },
+        { hid: 'keywords', name: 'keywords', content: 'Resilient Tech, ERP, ERPNext, Frappe, open source, software, customization, e-Commerce ERP, Manufacturing ERP, HRMS, India Compliance' },
         { hid: 'author', name: 'author', content: 'Resilient Tech' },
         { hid: 'robots', name: 'robots', content: 'index, follow' },
         { hid: 'googlebot', name: 'robots', content: 'index, follow' },
