@@ -180,11 +180,13 @@
               <ul class="contact">
                 <li>
                   <h3>Address</h3>
-                  <span>101, Deepam Signature<br />
-                    Jetalpur Road<br />
-                    Alkapuri, Vadodara<br />
-                    Gujarat, India - 390020
-                  </span>
+                  <a href="https://maps.app.goo.gl/pD4VbXmZoaTDbRFF9" target="_blank">
+                    <span>101, Deepam Signature<br />
+                      Jetalpur Road<br />
+                      Alkapuri, Vadodara<br />
+                      Gujarat, India - 390020
+                    </span>
+                  </a>
                 </li>
                 <li>
                   <h3>Email</h3>
