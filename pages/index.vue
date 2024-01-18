@@ -235,7 +235,7 @@ export default {
         { hid: 'author', name: 'author', content: 'Resilient Tech' },
         { hid: 'robots', name: 'robots', content: 'index, follow' },
         { hid: 'googlebot', name: 'robots', content: 'index, follow' },
-        { hid: 'copyright', name: 'copyright', content: 'Copyright © 2023, Resilient Tech' },
+        { hid: 'copyright', name: 'copyright', content: 'Copyright © 2024, Resilient Tech' },
         { hid: 'revisit-after', name: 'revisit-after', content: '7 days' },
         { hid: 'viewport', name: 'viewport', content: 'width=device-width, initial-scale=1' },
 
