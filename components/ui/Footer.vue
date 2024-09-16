@@ -3,10 +3,9 @@
     <div class="inner text-center w-100">
       <ul class="menu">
         <li>
-          &copy; {{ currentYear }} <NuxtLink to="/">Resilient Tech</NuxtLink>.
+          &copy; {{ currentYear }} <NuxtLink to="/">Resilient Software Services LLP</NuxtLink>.
           All rights reserved.
         </li>
-        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
       </ul>
     </div>
   </footer>

@@ -164,7 +164,7 @@
 export default {
   head() {
     return {
-      title: 'Careers | Resilient Tech',
+      title: 'Careers | Resilient Software Services LLP',
     }
   },
   computed: {
