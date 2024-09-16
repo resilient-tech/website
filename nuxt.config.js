@@ -5,7 +5,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
 
-    title: 'Resilient Tech',
+    title: 'Resilient Software Services LLP',
 
     meta: [
       { charset: 'utf-8' },
@@ -13,25 +13,25 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
       
       { hid: 'description', name: 'description', content: 'We inspire business growth with simple, yet powerful software experiences.' },
-      { hid: 'keywords', name: 'keywords', content: 'Resilient Tech, ERP, ERPNext, Frappe, open source, software, customization, e-Commerce ERP, Manufacturing ERP, HRMS, India Compliance' },
-      { hid: 'author', name: 'author', content: 'Resilient Tech' },
+      { hid: 'keywords', name: 'keywords', content: 'Resilient Tech, Resilient Software Services LLP, ERP, ERPNext, Frappe, open source, software, customization, e-Commerce ERP, Manufacturing ERP, HRMS, India Compliance' },
+      { hid: 'author', name: 'author', content: 'Resilient Software Services LLP' },
       { hid: 'robots', name: 'robots', content: 'index, follow' },
       { hid: 'googlebot', name: 'robots', content: 'index, follow' },
-      { hid: 'copyright', name: 'copyright', content: 'Copyright © 2024, Resilient Tech' },
+      { hid: 'copyright', name: 'copyright', content: 'Copyright © 2024, Resilient Software Services LLP' },
       { hid: 'revisit-after', name: 'revisit-after', content: '7 days' },
 
-      { hid: 'og:title', property: 'og:title', content: 'Resilient Tech' },
+      { hid: 'og:title', property: 'og:title', content: 'Resilient Software Services LLP' },
       { hid: 'og:description', property: 'og:description', content: 'We inspire business growth with simple, yet powerful software experiences.' },
       { hid: 'og:type', name: 'og:type', content: 'website' },
       { hid: 'og:url', name: 'og:url', content: 'https://www.resilient.tech/' },
       { hid: 'og:image', property: 'og:image', content: 'https://www.resilient.tech/_nuxt/assets/images/OG-Share.jpg' },
-      { hid: 'og:image:alt', name: 'og:image:alt', content: 'Resilient Tech Logo' },
+      { hid: 'og:image:alt', name: 'og:image:alt', content: 'Resilient Software Services LLP Logo' },
       { hid: 'og:image:width', name: 'og:image:width', content: '1200' },
       { hid: 'og:image:height', name: 'og:image:height', content: '675' },
 
 
       { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
-      { hid: 'twitter:title', name: 'twitter:title', content: 'Resilient Tech' },
+      { hid: 'twitter:title', name: 'twitter:title', content: 'Resilient Software Services LLP' },
       { hid: 'twitter:description', name: 'twitter:description', content: 'We inspire business growth with simple, yet powerful software experiences.' },
       { hid: 'twitter:image', name: 'twitter:image', content: 'https://www.resilient.tech/_nuxt/assets/images/OG-Share.jpg' }, // note : image is png so may get problem 
       { hid: 'twitter:image:width', name: 'twitter:image:width', content: '1200' },
