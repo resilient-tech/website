@@ -1,0 +1,17 @@
+[build]
+  command = "npm run generate"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  # Use esbuild for faster, smaller function bundles
+  node_bundler = "esbuild"
+
+  # Reduce bundle size significantly by keeping these as external dependencies
+  external_node_modules = ["altcha-lib", "nodemailer", "lambda-multipart-parser"]
+
+# Function-specific settings
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
