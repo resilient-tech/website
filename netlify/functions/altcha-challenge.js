@@ -30,6 +30,7 @@ const handler = async (event) => {
     const challenge = await createChallenge({
       hmacKey: secret,
       maxNumber: 100000, // Difficulty level
+      expires: new Date(Date.now() + 1000 * 60 * 5) // 5 minutes expiry
     })
 
     return {

@@ -21,11 +21,12 @@ async function verifyAltchaPayload(payload, secret) {
       return { valid: false, error: 'Secret key not configured' }
     }
 
-    // Verify using official library
-    const isValid = await verifySolution(payload, secret)
+    // Verify using official library with expiry checking
+    // The signature verification ensures the payload hasn't been tampered with
+    const isValid = await verifySolution(payload, secret, true) // checkExpires = true
 
     if (!isValid) {
-      return { valid: false, error: 'Invalid solution' }
+      return { valid: false, error: 'Invalid or expired solution' }
     }
 
     return { valid: true }
