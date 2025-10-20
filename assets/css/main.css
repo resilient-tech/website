@@ -4192,6 +4192,7 @@ body.bg::before {
 label.altcha-label {
   margin-left: 0.75em;
   margin-bottom: 0;
+  font-size: 1rem;
 }
 
 .altcha-footer, .altcha-logo {
