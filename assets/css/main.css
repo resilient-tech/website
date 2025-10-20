@@ -4103,3 +4103,103 @@ body.bg::before {
 .show {
   opacity: 1;
 }
+
+/* ALTCHA widget styling - match site's input field aesthetic */
+.altcha-container {
+  margin: 2.5rem 0;
+}
+
+/* Style the main widget container like an input field */
+.altcha-container .altcha {
+  background: #182127;
+  border-radius: 0.25em;
+  border: solid 1px rgba(255, 255, 255, 0.1);
+  padding: 0.75em 1em;
+}
+
+/* Add focus state when interacting with the widget */
+.altcha-container .altcha:focus-within {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 1px #ffffff;
+}
+
+/* Reset global checkbox hiding for ALTCHA - let widget control visibility */
+.altcha-container input[type='checkbox'] {
+  opacity: 1;
+  z-index: auto;
+  position: static;
+  float: none;
+  width: 1.65em;
+  height: 1.65em;
+  min-width: 1.65em;
+  min-height: 1.65em;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  /* Use custom checkbox styling to match template */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.25em;
+  border: solid 1px rgba(255, 255, 255, 0.1);
+  line-height: 1.58125em;
+  text-align: center;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Checked state - match template exactly */
+.altcha-container input[type='checkbox']:checked {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #52af51;
+}
+
+/* Add FontAwesome checkmark using ::before like the template */
+.altcha-container input[type='checkbox']:checked::before {
+  content: '\f00c';
+  display: block;
+  line-height: 1.58125em;
+}
+
+/* Remove custom label styling for ALTCHA */
+.altcha-container input[type='checkbox'] + label {
+  padding-left: 0;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1em;
+  vertical-align: middle;
+}
+
+/* Remove FontAwesome icon replacements for ALTCHA */
+.altcha-container input[type='checkbox'] + label:before,
+.altcha-container input[type='checkbox']:checked + label:before {
+  display: none !important;
+}
+
+/* Allow widget's .altcha-checkbox-verifying to hide checkbox during verification */
+.altcha-container .altcha-checkbox-verifying input[type='checkbox'] {
+  opacity: 0 !important;
+  appearance: none !important;
+  pointer-events: none !important;
+}
+
+label.altcha-label {
+  margin-left: 0.75em;
+  margin-bottom: 0;
+}
+
+.altcha-footer, .altcha-logo {
+  display: none !important;
+}
+
+/* Focus styling for submit button - use green accent for visibility */
+a.button.submit:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #52af51 !important;
+}

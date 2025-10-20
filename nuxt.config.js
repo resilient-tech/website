@@ -11,7 +11,7 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'format-detection', content: 'telephone=no' },
-      
+
       { hid: 'description', name: 'description', content: 'We inspire business growth with simple, yet powerful software experiences.' },
       { hid: 'keywords', name: 'keywords', content: 'Resilient Tech, Resilient Software Services LLP, ERP, ERPNext, Frappe, open source, software, customization, e-Commerce ERP, Manufacturing ERP, HRMS, India Compliance' },
       { hid: 'author', name: 'author', content: 'Resilient Software Services LLP' },
@@ -33,7 +33,7 @@ export default {
       { hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
       { hid: 'twitter:title', name: 'twitter:title', content: 'Resilient Software Services LLP' },
       { hid: 'twitter:description', name: 'twitter:description', content: 'We inspire business growth with simple, yet powerful software experiences.' },
-      { hid: 'twitter:image', name: 'twitter:image', content: 'https://www.resilient.tech/_nuxt/assets/images/OG-Share.jpg' }, // note : image is png so may get problem 
+      { hid: 'twitter:image', name: 'twitter:image', content: 'https://www.resilient.tech/_nuxt/assets/images/OG-Share.jpg' }, // note : image is png so may get problem
       { hid: 'twitter:image:width', name: 'twitter:image:width', content: '1200' },
       { hid: 'twitter:image:height', name: 'twitter:image:height', content: '675' },
 
@@ -125,7 +125,16 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ['altcha'], // Transpile the altcha package for older webpack versions
+  },
+
+  // Vue configuration for custom elements (for ALTCHA)
+  vue: {
+    config: {
+      ignoredElements: ['altcha-widget'],
+    },
+  },
 
   module: {
     rules: [

@@ -19,11 +19,16 @@
         @validate="validateField"
       />
     </div>
+    <slot name="after-fields"></slot>
     <a
+      href="#"
       class="button primary submit"
       type="submit"
+      tabindex="0"
       v-if="!isLoading"
       @click.stop.prevent="submit()"
+      @keydown.enter.prevent="submit()"
+      @keydown.space.prevent="submit()"
     >
       {{ submitLabel || 'SUBMIT' }}
     </a>

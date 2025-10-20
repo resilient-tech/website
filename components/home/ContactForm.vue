@@ -8,12 +8,19 @@
       submitLabel="Send Message"
       @submit="onSubmit"
       ref="contactForm"
-    />
+    >
+      <template #after-fields>
+        <Altcha
+          :payload.sync="altchaPayload"
+          :challengeurl="challengeUrl"
+        />
+      </template>
+    </Form>
     <transition name="fade">
       <div class="alert error d-block" v-if="error">
-        <span class="icon fa-check-circle"></span>
+        <span class="icon fa-exclamation-circle"></span>
         {{ error }}
-        <a class="close" @click.prevent="closErrorAlert">&times;</a>
+        <a class="close" @click.prevent="closeErrorAlert">&times;</a>
       </div>
     </transition>
     <transition name="fade">
@@ -43,6 +50,9 @@ export default {
       success: false,
       isLoading: false,
       error: null,
+      altchaPayload: '',
+      // ALTCHA challenge endpoint
+      challengeUrl: '/.netlify/functions/altcha-challenge',
     }
   },
   computed: {
@@ -78,11 +88,19 @@ export default {
       this.error = null
       const form = this.$refs.contactForm
       if (!form.validate()) return
+
+      // Validate ALTCHA payload
+      if (!this.altchaPayload) {
+        this.error = 'Please complete the verification.'
+        return
+      }
+
       this.isLoading = true
       try {
-        const response = await sendContactusInquiry(name, email, message)
+        const response = await sendContactusInquiry(name, email, message, this.altchaPayload)
         console.log(response)
         form.reset()
+        this.altchaPayload = '' // Reset ALTCHA
         this.success = true
       } catch (e) {
         this.error =
@@ -96,7 +114,7 @@ export default {
       this.success = false
     },
     closeErrorAlert() {
-      this.success = false
+      this.error = null
     },
   },
 }

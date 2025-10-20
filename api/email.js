@@ -1,10 +1,17 @@
 import axios from 'axios'
 
-function sendContactusInquiry(name, email, message) {
+function sendContactusInquiry(name, email, message, altchaPayload = null) {
+  const data = { name, email, message }
+
+  // validated in contact form
+  if (altchaPayload) {
+    data.altchaPayload = altchaPayload
+  }
+
   return axios
     .post(
       '/.netlify/functions/send-contact-inquiry',
-      formDataFromObject({ name, email, message }),
+      formDataFromObject(data),
       {
         headers: {
           'Content-Type': 'multipart/form-data',
