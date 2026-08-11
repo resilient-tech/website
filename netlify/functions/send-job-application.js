@@ -1,5 +1,5 @@
 const parser = require('lambda-multipart-parser')
-const { sendEmail, validateRequest } = require('../utils')
+const { sendEmail, validateRequest, escapeHtml } = require('../utils')
 
 const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -27,18 +27,18 @@ const handler = async (event) => {
     await sendEmail(
       `Resilient Tech <${process.env.GMAIL_SENDER}>`,
       process.env.JOB_APPLICATION_RECIPIENTS,
-      `New resume for the postion ${body.position}`,
+      `New resume for the postion ${escapeHtml(body.position)}`,
       `
-        Name: ${body.name} <br />
-        Email: <a href='mailto:${body.email}'>${body.email}</a><br />
-        Phone:  <a href='tel:${body.phone}'>${body.phone}</a><br />
-        Position: ${body.position}<br />
-        Remote: ${body.remote}<br />
-        About: ${body.about}<br />
-        Projects: ${body.projects}<br />
+        Name: ${escapeHtml(body.name)} <br />
+        Email: <a href='mailto:${encodeURIComponent(body.email)}'>${escapeHtml(body.email)}</a><br />
+        Phone:  <a href='tel:${encodeURIComponent(body.phone)}'>${escapeHtml(body.phone)}</a><br />
+        Position: ${escapeHtml(body.position)}<br />
+        Remote: ${escapeHtml(body.remote)}<br />
+        About: ${escapeHtml(body.about)}<br />
+        Projects: ${escapeHtml(body.projects)}<br />
         GitHub Profile: ${
           body.github
-            ? '<a href="' + body.github + '">' + body.github + '</a>'
+            ? '<a href="' + encodeURIComponent(body.github) + '">' + escapeHtml(body.github) + '</a>'
             : ''
         }<br />
       `,

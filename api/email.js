@@ -19,7 +19,7 @@ function sendContactusInquiry(name, email, message, altchaPayload = null) {
       }
     )
     .catch((error) => {
-      if (error.response.data.includes('TimeoutError')) return
+      if (isTimeout(error)) return
       throw error
     })
 }
@@ -36,9 +36,16 @@ function sendJobApplication(jobApplication) {
       }
     )
     .catch((error) => {
-      if (error.response.data.includes('TimeoutError')) return
+      if (isTimeout(error)) return
       throw error
     })
+}
+
+// Server may return a raw string (legacy) or a JSON error object; handle both.
+function isTimeout(error) {
+  const data = error.response?.data
+  const text = typeof data === 'string' ? data : JSON.stringify(data ?? '')
+  return text.includes('TimeoutError')
 }
 
 function formDataFromObject(object) {
