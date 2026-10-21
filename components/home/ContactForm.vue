@@ -26,30 +26,19 @@
       </template>
     </Form>
     <transition name="fade">
-      <div class="alert error d-block" v-if="error">
-        <span class="icon fa-exclamation-circle"></span>
+      <div class="alert error" role="alert" v-if="error">
         {{ error }}
-        <a class="close" @click.prevent="closeErrorAlert">&times;</a>
+        <button type="button" class="close" aria-label="Dismiss" @click="closeErrorAlert">&times;</button>
       </div>
     </transition>
     <transition name="fade">
-      <div class="alert success d-block" v-if="success">
-        <span class="icon fa-check-circle"></span>
+      <div class="alert success" role="status" v-if="success">
         Thanks for writing in! We'll contact you shortly.
-        <a class="close" @click.prevent="closeSuccessAlert">&times;</a>
+        <button type="button" class="close" aria-label="Dismiss" @click="closeSuccessAlert">&times;</button>
       </div>
     </transition>
   </div>
 </template>
-<style scoped>
-.close {
-  cursor: pointer;
-  font-size: 1.8rem;
-  margin: 0;
-  padding: 0;
-  right: 1rem;
-}
-</style>
 
 <script>
 import { sendContactusInquiry } from '~/api/email.js'

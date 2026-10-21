@@ -1,5 +1,5 @@
 <template>
-  <form :method="method || 'POST'" :class="formClass">
+  <form :method="method || 'POST'" :class="formClass" @submit.prevent="submit()">
     <div class="fields">
       <FormField
         v-for="(options, name) in formFields"
@@ -12,6 +12,7 @@
         :placeholder="options.placeholder"
         :required="options.required"
         :inputClass="options.class"
+        :fieldClass="options.fieldClass"
         :options="options.options"
         :rows="options.rows"
         :accept="options.accept"
@@ -20,18 +21,9 @@
       />
     </div>
     <slot name="after-fields"></slot>
-    <a
-      href="#"
-      class="button primary submit"
-      type="submit"
-      tabindex="0"
-      v-if="!isLoading"
-      @click.stop.prevent="submit()"
-      @keydown.enter.prevent="submit()"
-      @keydown.space.prevent="submit()"
-    >
-      {{ submitLabel || 'SUBMIT' }}
-    </a>
+    <button v-if="!isLoading" type="submit" class="btn btn-primary submit">
+      {{ submitLabel || 'Submit' }} <span class="arrow">→</span>
+    </button>
     <Loading v-else />
   </form>
 </template>

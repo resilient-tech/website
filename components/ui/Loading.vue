@@ -1,20 +1,24 @@
 <template>
-  <div class="text-center">
-    <i class="fa fa-spinner loading" aria-hidden="true"></i>
-  </div>
+  <div class="loading" role="status" aria-label="Sending"><span /></div>
 </template>
 
 <style scoped>
 .loading {
-  font-size: 1.5em;
-  animation: circle 1.5s linear infinite;
+  padding: 8px 0;
 }
 
-@keyframes circle {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
+.loading span {
+  display: block;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--faint);
+  border-top-color: var(--leaf);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
     transform: rotate(360deg);
   }
 }

@@ -1,31 +1,27 @@
 <template>
-  <div>
-    <section id="apply" class="card bg-dark fade-up mt-5 py-5">
-      <div class="m-auto col-10 col-lg-8 mt-5">
-        <h1>Job Application</h1>
-        <p>We'd love to have you on our team! Tell us more about yourself.</p>
-        <div class="style1">
-          <Form
-            method="POST"
-            formClass="contact-us"
-            :formFields="formFields"
-            :isLoading="isLoading"
-            submitLabel="SUBMIT"
-            @submit="onSubmit"
-            ref="jobApplicationForm"
-          />
-          <transition name="fade">
-            <div class="alert error d-block" v-if="error">
-              <span class="icon fa-check-circle"></span>
-              {{ error }}
-              <a class="close" @click.prevent="closeErrorAlert">&times;</a>
-            </div>
-          </transition>
-        </div>
+  <section id="apply" v-reveal class="apply-card">
+    <button type="button" class="page-close" aria-label="Go back" @click="back">
+      &times;
+    </button>
+    <p class="label rise">Job application</p>
+    <SplitText tag="h1" class="title" text="We'd love to have you on our *team.*" />
+    <p class="lead rise" style="--d: 0.3s">Tell us more about yourself.</p>
+    <Form
+      method="POST"
+      formClass="contact-us"
+      :formFields="formFields"
+      :isLoading="isLoading"
+      submitLabel="Send application"
+      @submit="onSubmit"
+      ref="jobApplicationForm"
+    />
+    <transition name="fade">
+      <div class="alert error" role="alert" v-if="error">
+        {{ error }}
+        <button type="button" class="close" aria-label="Dismiss" @click="closeErrorAlert">&times;</button>
       </div>
-      <a @click="back" aria-hidden="true" class="page-close">&times;</a>
-    </section>
-  </div>
+    </transition>
+  </section>
 </template>
 
 <script>
@@ -168,8 +164,40 @@ export default {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
     },
     closeErrorAlert() {
-      this.success = false
+      this.error = null
     },
   },
 }
 </script>
+
+<style scoped>
+.apply-card {
+  position: relative;
+  padding: clamp(28px, 5vw, 64px);
+  border: 1px solid var(--faint);
+  border-radius: 28px;
+  background: var(--ink-2);
+}
+
+.apply-card .lead {
+  margin-bottom: 48px;
+}
+
+.page-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.3s, rotate 0.4s var(--ease);
+}
+
+.page-close:hover {
+  color: var(--cream);
+  rotate: 90deg;
+}
+</style>

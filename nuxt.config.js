@@ -41,32 +41,20 @@ export default {
 
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap',
-        // href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap',
       },
-    ],
-    script: [
-      { type: 'text/javascript', src: '/js/jquery.min.js', body: true },
-      {
-        type: 'text/javascript',
-        src: '/js/jquery.scrollex.min.js',
-        body: true,
-      },
-      { type: 'text/javascript', src: '/js/main.js', body: true },
     ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '~/assets/css/font-awesome.min.css',
-    '~/assets/scss/custom.scss',
-    '~/assets/css/main.css',
-  ],
+  css: ['~/assets/css/site.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['~/plugins/bootstrap.js', '~/plugins/utils.client.js'],
+  plugins: ['~/plugins/utils.client.js', '~/plugins/reveal.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: {
@@ -110,7 +98,6 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    'bootstrap-vue/nuxt',
     '@nuxtjs/style-resources',
   ],
 
@@ -144,11 +131,6 @@ export default {
       },
     ],
   },
-  bootstrapVue: {
-    bootstrapCSS: false,
-    icons: false,
-  },
-
   pageTransition: {
     name: 'fade',
     mode: 'out-in',
