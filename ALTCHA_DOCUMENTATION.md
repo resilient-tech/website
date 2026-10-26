@@ -118,7 +118,7 @@ ALTCHA is a privacy-focused, GDPR-compliant spam protection alternative to reCAP
 ```
 ┌─────────────┐         ┌──────────────────┐         ┌─────────────────┐
 │   Browser   │         │  Netlify Edge    │         │ Email Service   │
-│  (Client)   │         │   Functions      │         │   (Gmail)       │
+│  (Client)   │         │   Functions      │         │   (AWS SES)     │
 └──────┬──────┘         └────────┬─────────┘         └────────┬────────┘
        │                         │                            │
        │ 1. GET challenge        │                            │
@@ -181,6 +181,9 @@ openssl rand -base64 32
 echo "ALTCHA_SECRET_KEY=<your-key>" >> .env
 ```
 
+To actually send mail, also fill `AWS_SES_ACCESS_KEY_ID`, `AWS_SES_SECRET_ACCESS_KEY` and
+`MAIL_SENDER` in `.env`, and point `CONTACT_US_RECIPIENTS` at an inbox you can read.
+
 **4. Run dev server**
 ```bash
 netlify dev  # Recommended - includes functions
@@ -234,11 +237,10 @@ git push  # if auto-deploy enabled
 - Generate: `openssl rand -base64 32`
 - Security: Never commit to Git!
 
-#### Existing (unchanged)
+#### Email (Amazon SES)
 
-- `GMAIL_USER` - Email account
-- `GMAIL_PASSWORD` - App password
-- `GMAIL_SENDER` - Sender email
+- `AWS_SES_ACCESS_KEY_ID`, `AWS_SES_SECRET_ACCESS_KEY` - Amazon SES send-only key
+- `MAIL_SENDER` - Sender email (`@resilient.tech`)
 - `CONTACT_US_RECIPIENTS` - Recipient emails
 
 ### Difficulty Settings

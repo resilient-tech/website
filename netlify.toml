@@ -8,7 +8,7 @@
   node_bundler = "esbuild"
 
   # Reduce bundle size significantly by keeping these as external dependencies
-  external_node_modules = ["altcha-lib", "nodemailer", "lambda-multipart-parser"]
+  external_node_modules = ["altcha-lib", "lambda-multipart-parser"]
 
 # Function-specific settings
 [[redirects]]

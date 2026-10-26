@@ -25,7 +25,7 @@ const handler = async (event) => {
     }
 
     await sendEmail(
-      `Resilient Tech <${process.env.GMAIL_SENDER}>`,
+      `Resilient Tech <${process.env.MAIL_SENDER}>`,
       process.env.JOB_APPLICATION_RECIPIENTS,
       `New resume for the postion ${escapeHtml(body.position)}`,
       `
@@ -48,7 +48,11 @@ const handler = async (event) => {
 
     return { statusCode: 200, body: JSON.stringify({ success: true }) }
   } catch (error) {
-    return { statusCode: 500, body: error.toString() }
+    console.error('send-job-application failed:', error)
+    return {
+      statusCode: 500,
+      body: JSON.stringify('Something went wrong.'),
+    }
   }
 }
 

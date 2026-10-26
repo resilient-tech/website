@@ -64,7 +64,7 @@ const handler = async (event) => {
     }
 
     await sendEmail(
-      `Resilient Tech <${process.env.GMAIL_SENDER}>`,
+      `Resilient Tech <${process.env.MAIL_SENDER}>`,
       process.env.CONTACT_US_RECIPIENTS,
       `Website Message from ${values.name}`,
       `
