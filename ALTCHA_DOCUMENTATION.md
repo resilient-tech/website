@@ -181,7 +181,7 @@ openssl rand -base64 32
 echo "ALTCHA_SECRET_KEY=<your-key>" >> .env
 ```
 
-To actually send mail, also fill `AWS_SES_ACCESS_KEY_ID`, `AWS_SES_SECRET_ACCESS_KEY` and
+To actually send mail, also fill `AWS_SES_ACCESS_KEY_ID`, `AWS_SES_ACCESS_KEY_SECRET` and
 `MAIL_SENDER` in `.env`, and point `CONTACT_US_RECIPIENTS` at an inbox you can read.
 
 **4. Run dev server**
@@ -239,7 +239,7 @@ git push  # if auto-deploy enabled
 
 #### Email (Amazon SES)
 
-- `AWS_SES_ACCESS_KEY_ID`, `AWS_SES_SECRET_ACCESS_KEY` - Amazon SES send-only key
+- `AWS_SES_ACCESS_KEY_ID`, `AWS_SES_ACCESS_KEY_SECRET` - Amazon SES send-only key
 - `MAIL_SENDER` - Sender email (`@resilient.tech`)
 - `CONTACT_US_RECIPIENTS` - Recipient emails
 
