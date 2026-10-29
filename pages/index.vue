@@ -1,242 +1,529 @@
 <template>
-  <div>
-    <Sidebar :navItems="{
-      Welcome: '#intro',
-      ERPNext: '#erpnext',
-      'Our Services': '#services',
-      'Get in touch': '#contact',
-    }">
-      <!-- <div class="sidebar-action mx-auto">
-        <span class="hiring-text">
-          We're hiring!
-        </span>
-        <NuxtLink to="/careers" class="hiring-link">Apply Now</NuxtLink>
-      </div> -->
-    </Sidebar>
-    <div id="wrapper">
-      <!-- Intro -->
-      <section id="intro" class="wrapper style1 fullscreen align-center">
-        <div class="inner">
-          <h1>
-            <Logo />
-          </h1>
-          <p>
-            We inspire business growth with simple, yet powerful software
-            experiences.
-          </p>
-        </div>
-      </section>
+  <main>
+    <LogoIntro />
 
-      <!-- ERPNext -->
-      <section id="erpnext" class="wrapper style1 fade-up">
-        <div class="inner">
-          <h2 class="align-center">
-            We <span class="icon fa-heart red"></span> ERPNext
-          </h2>
-          <p class="">
-            ERPNext is the modern, easy-to-use, 100% open source business
-            management system used by thousands of enterprises worldwide. Here's
-            why we love it:
-          </p>
-          <div class="features">
-            <section>
-              <span class="icon major fa-smile-o"></span>
-              <h3>Simple</h3>
-              <p>
-                Business management software can be daunting. ERPNext keeps it
-                simple and intuitive, making getting started a breeze.
-              </p>
-            </section>
-            <section>
-              <span class="icon major fa-laptop"></span>
-              <h3>Web Based</h3>
-              <p>
-                ERPNext works irrespective of the device or platform you're
-                using. Whether you're using a smartphone, or a laptop, it's
-                easily accessible.
-              </p>
-            </section>
-            <section>
-              <span class="icon major fa-cloud"></span>
-              <h3>Cloud Ready</h3>
-              <p>
-                Hosting your systems on the cloud gives you the satisfaction of
-                knowing that your data will be safe, secure and accessible
-                wherever you are.
-              </p>
-            </section>
-            <section>
-              <span class="icon major fa-list"></span>
-              <h3>Comprehensive</h3>
-              <p>
-                Tired of using multiple applications for different purposes? No
-                more. You can access everything you need at one place with
-                ERPNext.
-              </p>
-            </section>
-            <section>
-              <span class="icon major fa-globe"></span>
-              <h3>Open Source</h3>
-              <p>
-                Thousands of people worldwide (including us) contribute to
-                ERPNext. This means better, well-tested, and more secure
-                software for everyone.
-              </p>
-            </section>
-            <section>
-              <span class="icon major fa-code"></span>
-              <h3>Easily Customisable</h3>
-              <p>
-                Ever wished your software had that extra functionality which
-                would make your day a whole lot easier? With ERPNext,
-                imagination is the limit.
-              </p>
-            </section>
-          </div>
-        </div>
-      </section>
+    <section class="section statement container">
+      <p v-reveal class="label rise">In short</p>
+      <LitText
+        text="We help businesses run on one system instead of ten. We set up ERPNext, shape it around how you actually work, and contribute what we build back to the project."
+      />
+    </section>
 
-      <!-- Services -->
-      <section id="services" class="wrapper style1 fade-up">
-        <div class="inner">
-          <h2 class="align-center">Our Services</h2>
-          <p>
+    <section id="erpnext" class="section container">
+      <div v-reveal class="section-head">
+        <p class="label rise">Why ERPNext</p>
+        <SplitText class="title" text="Six reasons we *build on* ERPNext." />
+        <p class="lead rise" style="--d: 0.3s">
+          It's the modern, easy-to-use, 100% open-source business management
+          system used by thousands of enterprises worldwide. Here's why we love
+          it.
+        </p>
+      </div>
+      <ol class="reasons">
+        <li
+          v-for="(reason, i) in reasons"
+          :key="reason.title"
+          v-reveal
+          class="reason"
+          :style="{ '--d': `${(i % 3) * 0.1}s` }"
+        >
+          <span class="reason-line draw" />
+          <span class="reason-num rise">{{ pad(i) }}</span>
+          <h3 class="rise">{{ reason.title }}</h3>
+          <p class="rise">{{ reason.text }}</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="services" class="paper">
+      <div class="section container services">
+        <div v-reveal class="services-head">
+          <p class="label rise">What we do</p>
+          <SplitText class="title" text="From the first install to the *tenth upgrade.*" />
+          <p class="rise" style="--d: 0.3s">
             We strive to make ERPNext a delightful experience for our clients.
-            To achieve this, we offer a variety of services.
+            Here's how we help.
           </p>
-          <div class="features">
-            <section>
-              <span class="icon major fa-cog"></span>
-              <h3>Setup</h3>
-              <p>
-                Installing ERPNext can be daunting if you have no prior
-                experience. We can do that for you. Our setup service also
-                includes setting up SSL, Email, SMS, Dropbox Backups and more.
-              </p>
-            </section>
-            <section>
-              <span class="icon major fa-code"></span>
-              <h3>Customisation</h3>
-              <p>
-                Whether you want a missing functionality, a custom report, or
-                personalised print formats, we can design and develop it for
-                you. We also contribute it back to ERPNext, so that other users
-                can benefit from it.
-              </p>
-            </section>
-            <section>
-              <span class="icon major fa-exchange"></span>
-              <h3>Data Migration</h3>
-              <p>
-                Moving to ERPNext from an existing system? We can migrate the
-                data to your ERPNext server for you. We also offer services to
-                bulk import / export data.
-              </p>
-            </section>
-            <section>
-              <span class="icon major fa-link"></span>
-              <h3>Integrations</h3>
-              <p>
-                We can help you integrate ERPNext with an existing service so
-                that you can seamlessly manage all your business operations from
-                within ERPNext.
-              </p>
-            </section>
-            <section>
-              <span class="icon major fa-users"></span>
-              <h3>Training</h3>
-              <p>
-                We offer on-site training to help your team get things done in
-                ERPNext. This is specifically tailored to your company's
-                requirements and will boost the confidence and efficiency of
-                your team.
-              </p>
-            </section>
-            <section>
-              <span class="icon major fa-life-ring"></span>
-              <h3>Support and Maintenance</h3>
-              <p>
-                Something went wrong? Feeling stuck? You can call or email us.
-                We can also setup a remote desktop session to resolve the issue
-                if required. Additionally, we can handle your software and
-                system upgrades.
-              </p>
-            </section>
-          </div>
+          <a href="#contact" class="btn btn-dark rise" style="--d: 0.4s">
+            Start a project <span class="arrow">→</span>
+          </a>
         </div>
-      </section>
+        <ol class="service-list">
+          <li
+            v-for="(service, i) in services"
+            :key="service.title"
+            v-reveal
+            class="service rise"
+          >
+            <span class="service-num">{{ pad(i) }}</span>
+            <h3>{{ service.title }}</h3>
+            <p>{{ service.text }}</p>
+          </li>
+        </ol>
+      </div>
+    </section>
 
-      <!-- Contact -->
-      <section id="contact" class="wrapper style1 fade-up">
-        <div class="inner">
-          <h2>Get in touch.</h2>
-          <p>
-            We'd love to help you streamline your business processes.<br />
-            Fill the form below and we'll get back to you quickly.
-          </p>
-          <div class="split style1">
-            <ContactForm />
-            <section>
-              <ul class="contact">
-                <li>
-                  <h3>Address</h3>
-                  <a href="https://maps.app.goo.gl/pD4VbXmZoaTDbRFF9" target="_blank">
-                    <span>101, Deepam Signature<br />
-                      Jetalpur Road<br />
-                      Alkapuri, Vadodara<br />
-                      Gujarat, India - 390020
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <h3>Email</h3>
-                  <a href="mailto:info@resilient.tech"> info@resilient.tech </a>
-                </li>
-                <li>
-                  <h3>Social</h3>
-                  <ul class="icons">
-                    <li>
-                      <a href="https://github.com/resilient-tech" target="_blank"><span
-                          class="label">GitHub</span>
-                         
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                          </svg>
-
-                        </a>
-                    </li>
-
-                    <li>
-                      <a href="https://in.linkedin.com/company/resilient-tech" target="_blank">
-                        
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                          <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
-                        </svg>
-
-                        <span class="label">Linkedin</span></a>
-                    </li>
-
-                  </ul>
-                </li>
-              </ul>
-            </section>
-          </div>
+    <section id="open-source" class="section container open-source">
+      <div v-reveal class="os-copy">
+        <p class="label rise">Open source</p>
+        <SplitText class="title" text="We don't just use open source. We *ship* it." />
+        <p class="lead rise" style="--d: 0.3s">
+          Our biggest contribution is India Compliance, the ERPNext app that
+          handles GST for Indian businesses. Our team builds and maintains it in
+          the open, and it's free for anyone to use.
+        </p>
+        <ul class="os-features">
+          <li
+            v-for="(feature, i) in features"
+            :key="feature"
+            class="rise"
+            :style="{ '--d': `${0.4 + i * 0.07}s` }"
+          >
+            {{ feature }}
+          </li>
+        </ul>
+        <div class="os-links rise" style="--d: 0.8s">
+          <a href="https://indiacompliance.app" target="_blank" rel="noopener" class="link">
+            indiacompliance.app <span class="arrow">↗</span>
+          </a>
+          <a href="https://github.com/resilient-tech/india-compliance" target="_blank" rel="noopener" class="link">
+            Source on GitHub <span class="arrow">↗</span>
+          </a>
         </div>
-      </section>
-    </div>
-  </div>
+      </div>
+
+      <div v-reveal class="terminal rise" aria-label="Installing India Compliance with bench">
+        <div class="terminal-bar"><i /><i /><i /><span>~/frappe-bench</span></div>
+        <pre><code><span class="t-line" style="--d: 0.5s"><b>$</b> bench get-app https://github.com/resilient-tech/india-compliance</span><span class="t-line" style="--d: 2s"><b>$</b> bench --site erp.yourcompany.in install-app india_compliance</span><span class="t-line t-out" style="--d: 3.4s">Installing india_compliance...</span><span class="t-line t-cursor" style="--d: 3.9s"><b>$</b> </span></code></pre>
+      </div>
+    </section>
+
+    <section id="contact" class="section container contact">
+      <div v-reveal class="contact-copy">
+        <p class="label rise">Contact</p>
+        <SplitText class="title" text="Tell us how your business *runs.*" />
+        <p class="lead rise" style="--d: 0.3s">
+          We'd love to help you streamline your business processes. Fill in the
+          form and we'll get back to you quickly.
+        </p>
+        <dl class="contact-details rise" style="--d: 0.4s">
+          <div>
+            <dt>Email</dt>
+            <dd><a href="mailto:info@resilient.tech" class="link">info@resilient.tech</a></dd>
+          </div>
+          <div>
+            <dt>Office</dt>
+            <dd>
+              <a href="https://maps.app.goo.gl/pD4VbXmZoaTDbRFF9" target="_blank" rel="noopener">
+                101, Deepam Signature, Jetalpur Road<br />
+                Alkapuri, Vadodara, Gujarat 390020
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt>Elsewhere</dt>
+            <dd class="contact-social">
+              <a href="https://github.com/resilient-tech" target="_blank" rel="noopener" class="link">GitHub</a>
+              <a href="https://in.linkedin.com/company/resilient-tech" target="_blank" rel="noopener" class="link">LinkedIn</a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <div v-reveal class="contact-form rise" style="--d: 0.2s">
+        <ContactForm />
+      </div>
+    </section>
+  </main>
 </template>
 
-<style scoped>
-.sidebar-action {
-  font-size: large;
-}
-</style>
 <script>
-import Logo from '~/components/ui/Logo.vue'
 export default {
- 
-  components: { Logo },
- 
+  data() {
+    return {
+      reasons: [
+        { title: 'Simple', text: 'Business software can be daunting. ERPNext keeps it simple and intuitive, so getting started is a breeze.' },
+        { title: 'Web based', text: "It works whatever device you're on. Phone or laptop, your business is a browser tab away." },
+        { title: 'Cloud ready', text: 'Hosted in the cloud, your data stays safe, secure and reachable wherever you are.' },
+        { title: 'Comprehensive', text: 'No more juggling a different app for every job. Everything you need lives in one place.' },
+        { title: 'Open source', text: 'Thousands of people worldwide, us included, contribute to it. Better tested, more secure software for everyone.' },
+        { title: 'Customisable', text: 'Wish it had that one feature that would make your day easier? With ERPNext, it can be built.' },
+      ],
+      services: [
+        { title: 'Setup', text: "Installing ERPNext can be daunting if you haven't done it before. We do it for you, including SSL, email, SMS and Dropbox backups." },
+        { title: 'Customisation', text: 'A missing feature, a custom report, print formats that look like yours. We design and build it, then contribute it back to ERPNext so other users benefit too.' },
+        { title: 'Data migration', text: 'Moving from another system? We bring your data across to your ERPNext server, and handle bulk imports and exports.' },
+        { title: 'Integrations', text: 'We connect ERPNext with the services you already use, so you can manage all your business operations from one place.' },
+        { title: 'Training', text: "On-site training tailored to your company's needs, so your team gets things done in ERPNext with confidence." },
+        { title: 'Support & maintenance', text: 'Stuck? Call or email us, and we can take a remote session if needed. We also handle your software and system upgrades.' },
+      ],
+      features: [
+        'GSTR-1 preparation with checks before you file',
+        'Invoice Management System (IMS) for accurate GSTR-3B',
+        'Purchase reconciliation against GSTR-2B and GSTR-2A',
+        'e-Invoice and e-Waybill through the NIC portal',
+        'Instant GSTIN checks against government APIs',
+      ],
+    }
+  },
+
+  methods: {
+    pad(i) {
+      return String(i + 1).padStart(2, '0')
+    },
+  },
 }
 </script>
+
+<style scoped>
+.statement {
+  max-width: 1100px;
+}
+
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 clamp(24px, 4vw, 56px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reason {
+  position: relative;
+  padding: 32px 0 56px;
+}
+
+.reason-line {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: var(--faint);
+}
+
+.reason-num,
+.service-num {
+  display: block;
+  margin-bottom: 40px;
+  font: 500 12px/1 var(--mono);
+  color: var(--leaf);
+}
+
+.reason h3 {
+  margin-bottom: 14px;
+  font-size: clamp(26px, 2.4vw, 34px);
+}
+
+.reason p {
+  max-width: 26em;
+  margin: 0;
+  color: var(--muted);
+}
+
+.reason .rise:nth-child(3) {
+  transition-delay: calc(var(--d) + 0.08s);
+}
+
+.reason .rise:nth-child(4) {
+  transition-delay: calc(var(--d) + 0.16s);
+}
+
+.paper {
+  background: var(--paper);
+  color: var(--paper-ink);
+  --muted: var(--paper-muted);
+}
+
+.paper ::selection {
+  background: var(--paper-ink);
+  color: var(--paper);
+}
+
+.paper h2 ::v-deep em {
+  color: var(--leaf-deep);
+}
+
+/* sheet opens to full width as it scrolls in, where supported */
+@supports (animation-timeline: view()) {
+  .motion-ok .paper {
+    animation: sheet-open linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 70%;
+  }
+}
+
+@keyframes sheet-open {
+  from {
+    clip-path: inset(0 3vw round 40px);
+  }
+  to {
+    clip-path: inset(0 0 round 0px);
+  }
+}
+
+.services {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(48px, 7vw, 120px);
+  align-items: start;
+}
+
+.services-head {
+  position: sticky;
+  top: calc(var(--nav-h) + 48px);
+}
+
+.services-head > p:not(.label) {
+  max-width: 24em;
+  margin-bottom: 36px;
+  color: var(--paper-muted);
+  font-size: 18px;
+}
+
+.btn-dark {
+  background: var(--paper-ink);
+  border-color: var(--paper-ink);
+  color: var(--paper);
+}
+
+.btn-dark::before {
+  background: var(--leaf);
+}
+
+.btn-dark:hover {
+  border-color: var(--leaf);
+}
+
+.service-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.service {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 4px 16px;
+  padding: 36px 0 40px;
+  border-top: 1px solid var(--paper-line);
+}
+
+.service::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 100%;
+  height: 2px;
+  background: var(--leaf-deep);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s var(--ease);
+}
+
+.service:hover::after {
+  transform: scaleX(1);
+}
+
+.service-num {
+  grid-row: span 2;
+  margin: 10px 0 0;
+  color: var(--leaf-deep);
+}
+
+.service h3 {
+  font-size: clamp(28px, 3vw, 42px);
+  transition: translate 0.6s var(--ease);
+}
+
+.service:hover h3 {
+  translate: 10px 0;
+}
+
+.service p {
+  max-width: 34em;
+  margin: 12px 0 0;
+  color: var(--paper-muted);
+}
+
+.open-source {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: clamp(48px, 6vw, 96px);
+  align-items: center;
+}
+
+.os-features {
+  margin: 36px 0 40px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--faint);
+}
+
+.os-features li {
+  padding: 14px 0 14px 30px;
+  border-bottom: 1px solid var(--faint);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M0 4.2h4M4 4c1.6-2.6 3.4-3.6 5-3.6 1.7 0 3.4 1.2 5 3.6-1.6 2.4-3.3 3.6-5 3.6-1.6 0-3.4-1-5-3.6z' fill='%235cb946' stroke='%235cb946' stroke-width='.6'/%3E%3C/svg%3E") 0 50% no-repeat;
+}
+
+.os-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  font-weight: 500;
+}
+
+.terminal {
+  overflow: hidden;
+  border: 1px solid var(--faint);
+  border-radius: 16px;
+  background: #080d0b;
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.7);
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--faint);
+  font: 12px/1 var(--mono);
+  color: var(--muted);
+}
+
+.terminal-bar i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--faint);
+}
+
+.terminal-bar span {
+  margin-left: 10px;
+}
+
+.terminal pre {
+  margin: 0;
+  padding: 26px 22px 30px;
+  font: 13.5px/1.9 var(--mono);
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.t-line {
+  display: block;
+}
+
+.t-line b {
+  font-weight: 400;
+  color: var(--leaf);
+}
+
+.t-out {
+  color: var(--muted);
+}
+
+.t-cursor::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  vertical-align: text-bottom;
+  background: var(--cream);
+  animation: blink 1.1s steps(1) infinite;
+}
+
+/* commands type themselves out once the card is in view */
+.motion-ok .terminal .t-line {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.3s steps(42) var(--d);
+}
+
+.motion-ok .terminal.is-in .t-line {
+  clip-path: inset(0 0 0 0);
+}
+
+.motion-ok .terminal .t-out,
+.motion-ok .terminal .t-cursor {
+  transition-duration: 0.01s;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(48px, 7vw, 112px);
+  align-items: start;
+}
+
+.contact-details {
+  display: grid;
+  gap: 26px;
+  margin: 40px 0 0;
+}
+
+.contact-details dt {
+  margin-bottom: 6px;
+  font: 500 12px/1 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.contact-details dd {
+  margin: 0;
+  font-size: 18px;
+}
+
+.contact-social {
+  display: flex;
+  gap: 24px;
+}
+
+.contact-form {
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid var(--faint);
+  border-radius: 24px;
+  background: var(--ink-2);
+}
+
+@media (max-width: 960px) {
+  .reasons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .services,
+  .open-source,
+  .contact {
+    grid-template-columns: 1fr;
+  }
+
+  .services-head {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .reasons {
+    grid-template-columns: 1fr;
+  }
+
+  .reason {
+    padding-bottom: 40px;
+  }
+
+  .reason-num {
+    margin-bottom: 20px;
+  }
+
+  .service {
+    grid-template-columns: 40px 1fr;
+  }
+}
+</style>

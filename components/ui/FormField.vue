@@ -62,21 +62,26 @@
         hidden
       />
       <button
-        class="button icon solid fa-upload"
+        type="button"
+        class="btn btn-small"
         id="upload-button"
-        @click.prevent="openFileSelector(name)"
+        @click="openFileSelector(name)"
         v-if="!value"
       >
-        Upload Resume
+        Upload résumé <span class="arrow">↑</span>
       </button>
       <span id="resume-filename" v-if="value">
         {{ value.name }}
       </span>
-      <i
-        class="remove-file fa fa-close"
+      <button
+        type="button"
+        class="remove-file"
+        aria-label="Remove file"
         v-if="value"
         @click="removeFile(name)"
-      ></i>
+      >
+        &times;
+      </button>
     </span>
     <div class="input-error" v-if="error">
       <small>
@@ -87,20 +92,18 @@
 </template>
 
 <style scoped>
-label {
-  font-size: 1rem;
-}
-
-.input-error {
-  margin-top: 0.2rem;
-  font-size: 0.75rem;
-  color: #ff3333;
+#upload-button {
+  margin-top: 8px;
 }
 
 .remove-file {
-  color: red;
+  margin-left: 12px;
+  border: 0;
+  background: none;
+  color: var(--error);
+  font-size: 22px;
+  line-height: 1;
   cursor: pointer;
-  margin-left: 1rem;
 }
 </style>
 

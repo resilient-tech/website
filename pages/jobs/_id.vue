@@ -1,126 +1,54 @@
 <template>
-  <div>
-    <Sidebar
-      :navItems="{
-        Responsibilities: '#responsibilities',
-        Experience: '#experience',
-        Benefits: '#benefits',
-      }"
-    >
+  <main class="section container job">
+    <NuxtLink to="/careers" class="job-back">
+      <span class="arrow">←</span> All openings
+    </NuxtLink>
+
+    <header v-reveal class="job-head">
+      <p class="label rise">Open role</p>
+      <SplitText tag="h1" class="title" :text="job.title" />
+      <p class="lead rise" style="--d: 0.3s">{{ job.about }}</p>
       <NuxtLink
-        to="/careers"
-        class="
-          nuxt-link
-          button
-          fit
-          d-flex
-          align-items-center
-          justify-content-center
-        "
+        :to="`/jobs/apply?position=${job.id}`"
+        class="btn btn-primary rise"
+        style="--d: 0.4s"
       >
-        <i
-          class="fa fa-angle-left mb-1 me-2 prefix"
-          style="font-size: 1.2rem; margin-bottom: 0.15rem"
-        ></i>
-        Open Positions
+        Apply now <span class="arrow">→</span>
       </NuxtLink>
-    </Sidebar>
-    <div id="wrapper">
-      <section id="about" class="wrapper style2 bg">
-        <div class="inner">
-          <h2 class="major title">{{ job.title }}</h2>
-          <div>
-            <h3>About the job</h3>
-            {{ job.about }}
-            <br />
-            <br />
-            <h3 id="responsibilities">Responsibilities and Duties</h3>
-            <ul>
-              <li
-                v-for="responsibility in job.responsibilities.split('\n')"
-                :key="responsibility"
-              >
-                {{ responsibility }}
-              </li>
-            </ul>
-            <br />
-            <h3 id="experience">Required Experience</h3>
-            <ul>
-              <li v-for="exp in job.requiredExperience.split('\n')" :key="exp">
-                {{ exp }}
-              </li>
-            </ul>
-            <br />
-            <h3>Preferred Experience</h3>
-            <ul>
-              <li v-for="exp in job.preferredExperience.split('\n')" :key="exp">
-                {{ exp }}
-              </li>
-            </ul>
-            <h3>Technologies we use include:</h3>
-            <ul>
-              <li
-                v-for="technlogy in job.technologies.split('\n')"
-                :key="technlogy"
-              >
-                {{ technlogy }}
-              </li>
-            </ul>
-            <h3 id="benefits">Benefits</h3>
-            <ul>
-              <li v-for="benefit in job.benefits.split('\n')" :key="benefit">
-                {{ benefit }}
-              </li>
-            </ul>
-          </div>
-          <NuxtLink
-            :to="`/jobs/apply?position=${job.id}`"
-            class="button primary"
-          >
-            Apply Now
-          </NuxtLink>
-        </div>
-      </section>
+    </header>
+
+    <section
+      v-for="block in blocks"
+      :key="block.title"
+      v-reveal
+      class="job-block rise"
+    >
+      <h2>{{ block.title }}</h2>
+      <ul>
+        <li v-for="item in block.items" :key="item">{{ item }}</li>
+      </ul>
+    </section>
+
+    <div v-reveal class="job-apply rise">
+      <p>Sounds like you?</p>
+      <NuxtLink :to="`/jobs/apply?position=${job.id}`" class="btn btn-primary">
+        Apply for this role <span class="arrow">→</span>
+      </NuxtLink>
     </div>
-  </div>
+  </main>
 </template>
 
-<style scoped>
-.major {
-  margin: 0 0 1.3em 0;
-  position: relative;
-  padding-bottom: 0.35em;
-}
-.major:after {
-  background-image: -moz-linear-gradient(to right, #4cc49d, #54aa40);
-  background-image: -webkit-linear-gradient(to right, #4cc49d, #54aa40);
-  background-image: -ms-linear-gradient(to right, #4cc49d, #54aa40);
-  background-image: linear-gradient(to right, #4cc49d, #54aa40);
-  -moz-transition: max-width 0.2s ease;
-  -webkit-transition: max-width 0.2s ease;
-  -ms-transition: max-width 0.2s ease;
-  transition: max-width 0.2s ease;
-  border-radius: 0.2em;
-  bottom: 0;
-  content: '';
-  height: 0.1em;
-  position: absolute;
-  right: 0;
-  width: 100%;
-}
-
-#careers .title {
-  font-size: 2.5rem;
-}
-</style>
-
 <script>
+const lines = (text) =>
+  text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean)
+
 export default {
   head() {
     return {
-      title: `${
-        this.$store.getters['jobs/getJob'](this.$route.params.id).title
-      } | Resilient Tech`,
+      title: `${this.job.title} | Resilient Tech`,
     }
   },
   data() {
@@ -128,5 +56,97 @@ export default {
       job: this.$store.getters['jobs/getJob'](this.$route.params.id),
     }
   },
+  computed: {
+    blocks() {
+      return [
+        { title: 'Responsibilities and duties', items: lines(this.job.responsibilities) },
+        { title: 'Required experience', items: lines(this.job.requiredExperience) },
+        { title: 'Preferred experience', items: lines(this.job.preferredExperience) },
+        { title: 'Technologies we use include', items: lines(this.job.technologies) },
+        { title: 'Benefits', items: lines(this.job.benefits) },
+      ]
+    },
+  },
 }
 </script>
+
+<style scoped>
+.job {
+  max-width: 960px;
+  padding-top: calc(var(--nav-h) + 72px);
+}
+
+.job-back {
+  display: inline-flex;
+  gap: 8px;
+  margin-bottom: 56px;
+  color: var(--muted);
+  transition: color 0.3s;
+}
+
+.job-back:hover {
+  color: var(--cream);
+}
+
+.job-back:hover .arrow {
+  transform: translateX(-4px);
+}
+
+.job-head {
+  padding-bottom: 72px;
+}
+
+.job-head .lead {
+  margin-bottom: 36px;
+}
+
+.job-block {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: 16px 48px;
+  padding: 40px 0;
+  border-top: 1px solid var(--faint);
+}
+
+.job-block h2 {
+  font-size: clamp(24px, 2.4vw, 32px);
+}
+
+.job-block li {
+  position: relative;
+  padding: 0 0 12px 24px;
+  color: var(--muted);
+}
+
+.job-block li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 10px;
+  height: 1px;
+  background: var(--leaf);
+}
+
+.job-apply {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 48px 0 0;
+  border-top: 1px solid var(--faint);
+}
+
+.job-apply p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 40px);
+}
+
+@media (max-width: 760px) {
+  .job-block {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

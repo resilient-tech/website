@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <main class="section container apply">
     <JobApplicationForm />
-  </div>
+  </main>
 </template>
 
 <script>
@@ -11,12 +11,12 @@ export default {
       title: 'Apply Now | Resilient Software Services LLP',
     }
   },
-  data() {
-    return {
-      file: null,
-      invalidFile: false,
-      success: false,
-    }
-  },
 }
 </script>
+
+<style scoped>
+.apply {
+  max-width: 860px;
+  padding-top: calc(var(--nav-h) + 72px);
+}
+</style>
