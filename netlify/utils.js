@@ -1,25 +1,37 @@
-const nodemailer = require('nodemailer')
+const { SESv2Client, SendEmailCommand } = require('@aws-sdk/client-sesv2')
+
+// IAM user ses-sender may only send from @resilient.tech in ap-south-1.
+// Credentials are passed explicitly: Netlify reserves the default AWS_* env var names.
+const ses = new SESv2Client({
+  region: 'ap-south-1',
+  credentials: {
+    accessKeyId: process.env.AWS_SES_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SES_ACCESS_KEY_SECRET,
+  },
+})
 
 function sendEmail(from, to, subject, html, replyTo, attachments) {
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASSWORD,
-    },
-  })
-
-  return transporter.sendMail({
-    from,
-    to,
-    subject,
-    html,
-    attachments,
-    replyTo,
-  })
+  return ses.send(
+    new SendEmailCommand({
+      FromEmailAddress: from,
+      Destination: { ToAddresses: to.split(',').map((s) => s.trim()).filter(Boolean) },
+      ReplyToAddresses: replyTo ? [replyTo] : undefined,
+      Content: {
+        Simple: {
+          Subject: { Data: subject, Charset: 'UTF-8' },
+          Body: { Html: { Data: html, Charset: 'UTF-8' } },
+          Attachments: attachments?.length
+            ? attachments.map((f) => ({
+                FileName: f.filename,
+                ContentType: f.contentType,
+                ContentTransferEncoding: 'BASE64',
+                RawContent: f.content, // Buffer; the SDK base64-encodes it
+              }))
+            : undefined,
+        },
+      },
+    })
+  ) // resolves to { MessageId }
 }
 
 function validateRequest(body, requiredFields) {
